@@ -15,5 +15,9 @@ module.exports = {
     LootBox: "0x0000000000000000000000000000000000000000",
     BlockBench: "0x0000000000000000000000000000000000000000",
     CoreToken: "0x0000000000000000000000000000000000000000"
+  },
+  accessControl: {
+    allowedOrigins: ['localhost'],
+    key: 'abc123'
   }
 }
