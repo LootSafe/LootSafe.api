@@ -14,6 +14,7 @@ const contracts = (ethereum.testnet) ? require('../../../contracts/contracts.jso
 const statelessCall = function (contractName, func) {
   const artifacts = require(`../../../contracts/build/contracts/${contractName}.json`)
   const abi = contract(artifacts)
+
   abi.setProvider(web3.currentProvider)
   return abi.at(contracts[contractName]).then(instance => {
     return instance[func].call()

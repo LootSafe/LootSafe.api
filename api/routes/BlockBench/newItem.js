@@ -8,22 +8,15 @@ module.exports = async ctx => {
   const skin = req.skin || 'default'
   const metadata = req.metadata || 'no_metadata'
 
-  if (name && id && totalSupply && skin && metadata) {
-    const newItemResponse = await newItem(
-      name,
-      id,
-      totalSupply,
-      skin,
-      metadata
-    )
-  
-    ctx.body = {
-      response: newItemResponse
-    }
-  } else {
-    ctx.body = {
-      status: 400,
-      message: 'Missing or malformed data, please check your request body.'
-    }
-  }
+  const newItemResponse = await newItem(
+    name,
+    id,
+    totalSupply,
+    skin,
+    metadata
+  )
+
+  console.log(newItemResponse)
+
+  ctx.body = newItemResponse
 }

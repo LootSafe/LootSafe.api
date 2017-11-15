@@ -15,7 +15,9 @@ const statefulCall = function (contractName) {
   const artifacts = require(`../../../contracts/build/contracts/${contractName}.json`)
   const abi = contract(artifacts)
   abi.setProvider(web3.currentProvider)
+  console.log(contractName, contracts[contractName])
   return abi.at(contracts[contractName]).then(instance => {
+    console.log('instance address', instance.address)
     return instance
   })
 }
