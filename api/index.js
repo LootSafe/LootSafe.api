@@ -36,7 +36,9 @@ app.use(_.get(`/v${version}/`, meta))
 
 app.use(_.get(`/v${version}/address/token`, getTokenAddress))
 
-app.use(_.post(`/v${version}/new/item`, (ctx) => accessControl([ctx], newItem)))
+
+// Admin routes
+app.use(_.post(`/v${version}/new/item`, newItem))
 
 app.listen(port)
 

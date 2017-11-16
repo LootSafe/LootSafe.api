@@ -1,10 +1,10 @@
 const { accessControl } = require('../../config')
 
-module.exports = async function access(args, next) {
-  if (args[0].request.headers && args[0].request.headers.key === accessControl.key) {
-    next.apply(args[0], args)
+module.exports = async function access(ctx, next) {
+  if (ctx.request.headers && ctx.request.headers.key === accessControl.key) {
+    next()
   } else {
-    args[0].body = {
+    ctx.body = {
       status: 401,
       message: 'Unauthorized access!'
     }
