@@ -1,4 +1,4 @@
-const { statefulCall } = require('../../modules')
+const { getInstance } = require('../../modules')
 
 const {
   ethereum,
@@ -16,7 +16,7 @@ const {
  */
 module.exports = (name, id, supply, skin, metadata) => {
   return new Promise(resolve => {
-    statefulCall('BlockBench').then(instance => {
+    getInstance('BlockBench').then(instance => {
       instance.createItem(
         name,
         id,

@@ -3,7 +3,6 @@ const Web3 = require('web3')
 const provider = new Web3.providers.HttpProvider('http://localhost:8545')
 const web3 = new Web3(provider)
 
-
 module.exports = {
   port: 1337,
   version: 1,
@@ -25,6 +24,6 @@ module.exports = {
   },
   accessControl: {
     allowedOrigins: ['localhost'],
-    key: 'abc123'
+    key: 'sha1$7f408b79$1$02fdd7ee5f25861e9ed1af83bf06124c52b3aec6'
   }
 }

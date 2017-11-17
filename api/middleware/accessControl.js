@@ -1,12 +1,6 @@
 const { accessControl } = require('../../config')
+const phash = require('password-hash')
 
-module.exports = async function access(ctx, next) {
-  if (ctx.request.headers && ctx.request.headers.key === accessControl.key) {
-    next()
-  } else {
-    ctx.body = {
-      status: 401,
-      message: 'Unauthorized access!'
-    }
-  }
+module.exports = function access(password) {
+  return phash.verify(password, accessControl.key)
 }

@@ -1,6 +1,6 @@
 const { newItem } = require('../../controllers')
 const { accessControl } = require('../../../config')
-
+const checkAccess = require('../../middleware/accessControl')
 
 /**
  * Creates a new item.
@@ -18,7 +18,7 @@ module.exports = async ctx => {
   const totalSupply = req.totalSupply
   const skin = req.skin || 'default'
   const metadata = req.metadata || 'no_metadata'
-  if (ctx.request.headers && ctx.request.headers.key === accessControl.key) {
+  if (ctx.request.headers && ctx.request.headers.key && checkAccess(ctx.request.headers.key)) {
     const newItemResponse = await newItem(
       name,
       id,
@@ -28,5 +28,10 @@ module.exports = async ctx => {
     )
 
     ctx.body = newItemResponse
+  } else {
+    ctx.body = {
+      status: 401,
+      message: 'Unauthorized access!'
+    }
   }
 }

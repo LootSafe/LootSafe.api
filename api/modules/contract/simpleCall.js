@@ -11,7 +11,7 @@ const web3 = new Web3(provider)
 
 const contracts = (ethereum.testnet) ? require('../../../contracts/contracts.json') : addresses
 
-const statelessCall = function (contractName, func) {
+const statelessCall = function (contractName, func, args) {
   const artifacts = require(`../../../contracts/build/contracts/${contractName}.json`)
   const abi = contract(artifacts)
 

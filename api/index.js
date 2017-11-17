@@ -20,7 +20,9 @@ const {
 const {
   meta,
   getTokenAddress,
-  newItem
+  newItem,
+  getItems,
+  getItem
 } = require('./routes')
 
 const {
@@ -35,10 +37,10 @@ if (debug) app.use(logger())
 app.use(_.get(`/v${version}/`, meta))
 
 app.use(_.get(`/v${version}/address/token`, getTokenAddress))
-
-
+app.use(_.get(`/v${version}/item/list`, getItems))
+app.use(_.get(`/v${version}/item/get/:item`, getItem))
 // Admin routes
-app.use(_.post(`/v${version}/new/item`, newItem))
+app.use(_.post(`/v${version}/item/new`, newItem))
 
 app.listen(port)
 

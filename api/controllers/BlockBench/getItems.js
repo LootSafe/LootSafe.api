@@ -1,9 +1,9 @@
 const { simpleCall } = require('../../modules')
 
 /**
- * Get the address of the utility token
+ * Get the available items
  * @route
  */
 module.exports = () => {
-  return simpleCall('BlockBench', 'getTokenAddress')
+  return simpleCall('BlockBench', 'getItems')
 }

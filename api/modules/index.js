@@ -1,4 +1,4 @@
 module.exports = {
-  statelessCall: require('./contract/statelessCall'),
-  statefulCall: require('./contract/statefulCall')
+  getInstance: require('./contract/getInstance'),
+  simpleCall: require('./contract/simpleCall')
 }
