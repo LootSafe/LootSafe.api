@@ -6,6 +6,7 @@ const Koa = require('koa')
 const logger = require('koa-logger')
 const app = new Koa()
 const bodyParser = require('koa-bodyparser')
+const mongoose = require('mongoose')
 
 const {
   eth
@@ -14,7 +15,8 @@ const {
 const {
   port,
   version,
-  debug
+  debug,
+  db
 } = require('../config')
 
 const {
@@ -28,6 +30,8 @@ const {
 const {
   accessControl
 } = require('./middleware')
+
+mongoose.connect(`mongodb://localhost/${db}`)
 
 app.use(bodyParser())
 // Log routes being hit and returned if debug mode
@@ -65,3 +69,5 @@ if (debug) ngrok.connect(9090, (err, url) => {
     )
   )
 }) 
+
+require('./watchers')

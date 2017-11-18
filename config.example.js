@@ -7,6 +7,7 @@ module.exports = {
   port: 1337,
   version: 1,
   debug: true,
+  db: 'BlockBench',  
   ethereum: {
     account: web3.eth.accounts[0],
     testnet: true,
