@@ -24,7 +24,9 @@ const {
   getTokenAddress,
   newItem,
   getItems,
-  getItem
+  getItem,
+  spawnItem,
+  clearAvailability
 } = require('./routes')
 
 const {
@@ -43,8 +45,11 @@ app.use(_.get(`/v${version}/`, meta))
 app.use(_.get(`/v${version}/address/token`, getTokenAddress))
 app.use(_.get(`/v${version}/item/list`, getItems))
 app.use(_.get(`/v${version}/item/get/:item`, getItem))
+
 // Admin routes
 app.use(_.post(`/v${version}/item/new`, newItem))
+app.use(_.post(`/v${version}/item/spawn`, spawnItem))
+app.use(_.post(`/v${version}/item/clearAvailability`, clearAvailability))
 
 app.listen(port)
 
