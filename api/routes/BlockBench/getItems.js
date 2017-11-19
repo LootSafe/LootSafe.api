@@ -1,8 +1,9 @@
 const { getItems } = require('../../controllers')
 const Web3 = require('web3')
 const web3 = new Web3()
+
 /**
- * Get the address of the utility token
+ * Get the available items
  * @route
  */
 module.exports = async ctx => {

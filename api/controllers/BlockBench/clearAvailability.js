@@ -6,8 +6,9 @@ const {
 } = require('../../../config')
 
 /**
- * Get the available items
- * @route
+ * Clear future distrobution of an item
+ * @constructor
+ * @param {string} name - The name of the item
  */
 module.exports = (name) => {
   return getInstance('BlockBench').then(instance => {

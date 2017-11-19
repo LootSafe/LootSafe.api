@@ -6,16 +6,16 @@ const {
 } = require('../../../config')
 
 /**
- * Give an item to a player
+ * Give tokens to address
  * @constructor
- * @param {string} name - The name of the item
- * @param {string} to - The address to send to
+ * @param {string} to - Receiving address
+ * @param {number} amount - The amount of tokens to give
  */
-module.exports = (name, to = '0x0') => {
+module.exports = (to = '0x0', amount = 0) => {
   return getInstance('BlockBench').then(instance => {
-    return instance.spawnItem(
-      name,
+    instance.issueTokens(
       to,
+      amount,
       {gas: 3000000, from: ethereum.account}
     )
   })

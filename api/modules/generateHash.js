@@ -1,7 +1,7 @@
 const { accessControl } = require('../../config')
 const phash = require('password-hash')
 const chalk = require('chalk')
-
+const qrcode = require('qrcode-terminal')
 
 const crypto = require('crypto');
 const ethUtils = require('ethereumjs-util')
@@ -15,6 +15,11 @@ const getRandomWallet = function() {
 const pass = getRandomWallet().privKey
 
 const hash = phash.generate(pass)
+
+
+console.log(
+  qrcode.generate(pass, {small: true})
+)
 
 console.log(
   chalk.green('Private key generated, save this you will need this to access any authenticated route!',

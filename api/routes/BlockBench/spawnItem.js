@@ -5,8 +5,10 @@ const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
 
 /**
- * Get the address of the utility token
- * @route
+ * Give an item to a player
+ * @constructor
+ * @param {string} name - The name of the item
+ * @param {string} to - The address to send to
  */
 module.exports = async (ctx) => {
   if (ctx.request.headers && ctx.request.headers.key && checkAccess(ctx.request.headers.key)) {
