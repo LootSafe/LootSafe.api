@@ -18,7 +18,9 @@ module.exports = async ctx => {
   const totalSupply = req.totalSupply
   const skin = req.skin || 'default'
   const metadata = req.metadata || 'no_metadata'
-  if (ctx.request.headers && ctx.request.headers.key && checkAccess(ctx.request.headers.key)) {
+  
+  const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
+  if (access) {
     const newItemResponse = await newItem(
       name,
       id,

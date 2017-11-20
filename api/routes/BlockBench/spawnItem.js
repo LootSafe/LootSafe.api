@@ -11,7 +11,9 @@ const checkAccess = require('../../middleware/accessControl')
  * @param {string} to - The address to send to
  */
 module.exports = async (ctx) => {
-  if (ctx.request.headers && ctx.request.headers.key && checkAccess(ctx.request.headers.key)) {
+  const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
+
+  if (access) {
     const items = await getItems()
     const decoded = items.map(item => web3.toUtf8(item))
     

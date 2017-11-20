@@ -26,5 +26,10 @@ module.exports = {
   accessControl: {
     allowedOrigins: ['localhost'],
     key: 'sha1$7f408b79$1$02fdd7ee5f25861e9ed1af83bf06124c52b3aec6'
+  },
+  yubico: {
+    enabled: true,
+    clientId: 35374,
+    secret: 'jAOPLIZfzZImv106iC1lDscTJxQ='
   }
 }

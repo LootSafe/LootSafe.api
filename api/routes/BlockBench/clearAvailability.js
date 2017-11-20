@@ -10,7 +10,8 @@ const checkAccess = require('../../middleware/accessControl')
  * @param {string} name - The name of the item
  */
 module.exports = async (ctx) => {
-  if (ctx.request.headers && ctx.request.headers.key && checkAccess(ctx.request.headers.key)) {
+  const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
+  if (access) {
     const items = await getItems()
     const decoded = items.map(item => web3.toUtf8(item))
     
