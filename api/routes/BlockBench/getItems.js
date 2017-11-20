@@ -13,6 +13,7 @@ module.exports = async ctx => {
   ctx.body = {
     status: 200,
     message: 'Items fetched',
+    items,
     decoded
   }
 }
