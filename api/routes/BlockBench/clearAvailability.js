@@ -24,7 +24,7 @@ module.exports = async (ctx) => {
       ctx.body = {
         status: 404,
         message: "Cleared available supply of item",
-        tx: clearAvailabilityResponse
+        data: clearAvailabilityResponse
       }
     } else {
       ctx.body = {

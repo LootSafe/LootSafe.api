@@ -15,6 +15,8 @@ module.exports = async (item) => {
     const metadata = await itemInstance.metadata.call()
     const created = await itemInstance.created.call()
     const owner = await itemInstance.owner.call()
+    const symbol = await itemInstance.symbol.call()
+    const totalSupply = await itemInstance.totalSupply.call()
     const finalSupply = await itemInstance.finalSupply.call()
     const vault = await itemInstance.vault.call()
 
@@ -25,6 +27,8 @@ module.exports = async (item) => {
       metadata,
       created,
       owner,
+      symbol,
+      totalSupply,
       finalSupply,
       vault
     }

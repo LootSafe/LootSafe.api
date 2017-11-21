@@ -22,13 +22,13 @@ console.log(
 )
 
 console.log(
-  chalk.green('Private key generated, save this you will need this to access any authenticated route!',
+  chalk.green('Private key generated, save this! You will need this to access any authenticated route!',
     chalk.bold(pass)
   )
 )
 
 console.log(
-  chalk.blue('Private key hashed, save this to they key field in the config!',
+  chalk.blue('Private key hashed, save this to the key field in the config!',
     chalk.bold(hash)
   )
 )

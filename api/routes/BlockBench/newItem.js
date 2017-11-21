@@ -21,15 +21,22 @@ module.exports = async ctx => {
   
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
-    const newItemResponse = await newItem(
-      name,
-      id,
-      totalSupply,
-      skin,
-      metadata
-    )
-
-    ctx.body = newItemResponse
+    if (name.length > 8) {
+      ctx.body = {
+        status: 500,
+        message: 'Name exceeds length limit, please limit your name to 8 characters.'
+      }
+    } else {
+      const newItemResponse = await newItem(
+        name,
+        id,
+        totalSupply,
+        skin,
+        metadata
+      )
+  
+      ctx.body = newItemResponse
+    }
   } else {
     ctx.body = {
       status: 401,

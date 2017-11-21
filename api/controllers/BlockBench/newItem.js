@@ -28,7 +28,7 @@ module.exports = (name, id, supply, skin, metadata) => {
         resolve({
           status: 200,
           message: 'Created new item',
-          tx
+          data: tx
         })
       }).catch(() => {
         resolve({

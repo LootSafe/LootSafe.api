@@ -11,6 +11,6 @@ module.exports = async (ctx, item) => {
   ctx.body = {
     status: 200,
     message: 'Item fetched',
-    itemResponse
+    data: itemResponse
   }
 }

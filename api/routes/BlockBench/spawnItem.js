@@ -26,7 +26,7 @@ module.exports = async (ctx) => {
       ctx.body = {
         status: 404,
         message: "Spawned one item",
-        tx: spawnItemResponse
+        data: spawnItemResponse
       }
     } else {
       ctx.body = {

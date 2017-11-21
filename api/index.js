@@ -20,13 +20,17 @@ const {
 } = require('../config')
 
 const {
+  // Core
   meta,
   getTokenAddress,
   newItem,
   getItems,
   getItem,
   spawnItem,
-  clearAvailability
+  clearAvailability,
+  // Crafter
+  getCraftables,
+  newRecipie
 } = require('./routes')
 
 const {
@@ -47,9 +51,13 @@ app.use(_.get(`/v${version}/item/list`, getItems))
 app.use(_.get(`/v${version}/item/get/:item`, getItem))
 
 // Admin routes
+// Core
 app.use(_.post(`/v${version}/item/new`, newItem))
 app.use(_.post(`/v${version}/item/spawn`, spawnItem))
 app.use(_.post(`/v${version}/item/clearAvailability`, clearAvailability))
+
+// Crafter
+app.use(_.post(`/v${version}/recipie/new`, newRecipie))
 
 app.listen(port)
 

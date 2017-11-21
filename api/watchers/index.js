@@ -1,1 +1,2 @@
 require('./BlockBench')
+require('./Crafter')

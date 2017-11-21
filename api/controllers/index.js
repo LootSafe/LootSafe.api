@@ -5,5 +5,8 @@ module.exports = {
   getItem: require('./BlockBench/getItem'),
   spawnItem: require('./BlockBench/spawnItem'),
   clearAvailability: require('./BlockBench/clearAvailability'),
-  issueTokens: require('./BlockBench/issueTokens')
+  issueTokens: require('./BlockBench/issueTokens'),
+  // Crafter
+  newRecipie: require('./Crafter/newRecipie'),
+  getCraftables: require('./Crafter/getCraftables')
 }
