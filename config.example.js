@@ -7,7 +7,7 @@ module.exports = {
   port: 1337,
   version: 1,
   debug: true,
-  db: 'BlockBench',  
+  db: 'LootSafe',  
   ethereum: {
     account: web3.eth.accounts[0],
     testnet: true,
@@ -20,7 +20,7 @@ module.exports = {
     Meta: "0x0000000000000000000000000000000000000000",
     Trade: "0x0000000000000000000000000000000000000000",
     LootBox: "0x0000000000000000000000000000000000000000",
-    BlockBench: "0x0000000000000000000000000000000000000000",
+    LootSafe: "0x0000000000000000000000000000000000000000",
     CoreToken: "0x0000000000000000000000000000000000000000"
   },
   accessControl: {

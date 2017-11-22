@@ -1,12 +1,12 @@
 module.exports = {
-  getTokenAddress: require('./BlockBench/getTokenAddress'),
-  newItem: require('./BlockBench/newItem'),
-  getItems: require('./BlockBench/getItems'),
-  getItem: require('./BlockBench/getItem'),
-  spawnItem: require('./BlockBench/spawnItem'),
-  clearAvailability: require('./BlockBench/clearAvailability'),
-  issueTokens: require('./BlockBench/issueTokens'),
+  getTokenAddress: require('./LootSafe/getTokenAddress'),
+  newItem: require('./LootSafe/newItem'),
+  getItems: require('./LootSafe/getItems'),
+  getItem: require('./LootSafe/getItem'),
+  spawnItem: require('./LootSafe/spawnItem'),
+  clearAvailability: require('./LootSafe/clearAvailability'),
+  issueTokens: require('./LootSafe/issueTokens'),
   // Crafter
   newRecipie: require('./Crafter/newRecipie'),
-  getCraftables: require('./Crafter/getCraftables')
+  getRecipie: require('./Crafter/getRecipie')
 }

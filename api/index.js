@@ -29,7 +29,7 @@ const {
   spawnItem,
   clearAvailability,
   // Crafter
-  getCraftables,
+  getRecipie,
   newRecipie
 } = require('./routes')
 
@@ -49,6 +49,9 @@ app.use(_.get(`/v${version}/`, meta))
 app.use(_.get(`/v${version}/address/token`, getTokenAddress))
 app.use(_.get(`/v${version}/item/list`, getItems))
 app.use(_.get(`/v${version}/item/get/:item`, getItem))
+
+app.use(_.get(`/v${version}/recipie/get/:item`, getRecipie))
+
 
 // Admin routes
 // Core

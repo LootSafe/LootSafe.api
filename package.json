@@ -1,5 +1,5 @@
 {
-  "name": "blockbench.api",
+  "name": "LootSafe.api",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -12,14 +12,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wski/BlockBench.api.git"
+    "url": "git+https://github.com/wski/LootSafe.api.git"
   },
   "author": "wski",
   "license": "UNLICENSED",
   "bugs": {
-    "url": "https://github.com/wski/BlockBench.api/issues"
+    "url": "https://github.com/wski/LootSafe.api/issues"
   },
-  "homepage": "https://github.com/wski/BlockBench.api#readme",
+  "homepage": "https://github.com/wski/LootSafe.api#readme",
   "dependencies": {
     "any-promise": "^1.3.0",
     "bignumber.js": "^4.1.0",

@@ -13,10 +13,7 @@ const {
  * @param {array} counts - Count of each item to craft
  */
 module.exports = (result = '0x0', materials = [], counts = []) => {
-  console.log(result);
-  console.log(materials);
-  console.log(counts)
-  return getInstance('BlockBench').then(instance => {
+  return getInstance('LootSafe').then(instance => {
     return instance.newRecipie(
       result,
       materials,

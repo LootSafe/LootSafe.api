@@ -15,8 +15,6 @@ module.exports = async ctx => {
   const materials = req.materials
   const counts = req.counts.map(i => parseInt(i))
 
-  console.log(materials)
-  console.log(counts)
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
     const newRecipieResponse = await newRecipie(
@@ -25,7 +23,6 @@ module.exports = async ctx => {
       counts
     )
 
-    console.log(newRecipieResponse)
     ctx.body = {
       status: 200,
       message: 'New recipie added',

@@ -1,2 +1,2 @@
-require('./BlockBench')
+require('./LootSafe')
 require('./Crafter')

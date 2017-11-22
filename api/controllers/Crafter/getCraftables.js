@@ -1,9 +1,11 @@
-const { simpleCall } = require('../../modules')
+const { getInstance } = require('../../modules')
 
 /**
  * Get the available items to craft
  * @route
  */
-module.exports = () => {
-  return simpleCall('BlockBench', 'craftables')
+module.exports = (item) => {
+  return getInstance('LootSafe').then(async instance => {
+    return instance.craftables.call()
+  })
 }

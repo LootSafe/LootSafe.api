@@ -1,1 +1,1 @@
-# BlockBench.api
+# LootSafe.api
