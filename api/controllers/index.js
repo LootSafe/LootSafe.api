@@ -8,5 +8,7 @@ module.exports = {
   issueTokens: require('./LootSafe/issueTokens'),
   // Crafter
   newRecipie: require('./Crafter/newRecipie'),
-  getRecipie: require('./Crafter/getRecipie')
+  getRecipie: require('./Crafter/getRecipie'),
+  getCraftables: require('./Crafter/getCraftables'),
+  getDeconstrucatbles: require('./Crafter/getCraftables')
 }

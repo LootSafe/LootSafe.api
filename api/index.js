@@ -30,7 +30,9 @@ const {
   clearAvailability,
   // Crafter
   getRecipie,
-  newRecipie
+  newRecipie,
+  getCraftables,
+  getDeconstructables
 } = require('./routes')
 
 const {
@@ -49,6 +51,10 @@ app.use(_.get(`/v${version}/`, meta))
 app.use(_.get(`/v${version}/address/token`, getTokenAddress))
 app.use(_.get(`/v${version}/item/list`, getItems))
 app.use(_.get(`/v${version}/item/get/:item`, getItem))
+
+app.use(_.get(`/v${version}/craftables`, getCraftables))
+app.use(_.get(`/v${version}/deconstructables`, getDeconstructables))
+
 
 app.use(_.get(`/v${version}/recipie/get/:item`, getRecipie))
 

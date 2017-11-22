@@ -6,6 +6,6 @@ const { getInstance } = require('../../modules')
  */
 module.exports = (item) => {
   return getInstance('LootSafe').then(async instance => {
-    return instance.getCraftables.call()
+    return instance.getRecipie.call(item)
   })
 }
