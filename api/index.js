@@ -32,7 +32,8 @@ const {
   getRecipie,
   newRecipie,
   getCraftables,
-  getDeconstructables
+  getDeconstructables,
+  removeRecipie
 } = require('./routes')
 
 const {
@@ -67,6 +68,7 @@ app.use(_.post(`/v${version}/item/clearAvailability`, clearAvailability))
 
 // Crafter
 app.use(_.post(`/v${version}/recipie/new`, newRecipie))
+app.use(_.post(`/v${version}/recipie/remove`, removeRecipie))
 
 app.listen(port)
 

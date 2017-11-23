@@ -10,5 +10,6 @@ module.exports = {
   newRecipie: require('./Crafter/newRecipie'),
   getRecipie: require('./Crafter/getRecipie'),
   getCraftables: require('./Crafter/getCraftables'),
-  getDeconstrucatbles: require('./Crafter/getCraftables')
+  getDeconstrucatbles: require('./Crafter/getCraftables'),
+  removeRecipie: require('./Crafter/removeRecipie')
 }
