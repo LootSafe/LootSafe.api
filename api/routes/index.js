@@ -8,8 +8,10 @@ module.exports = {
   clearAvailability: require('./LootSafe/clearAvailability'),
   // Crafter
   newRecipie: require('./Crafter/newRecipie'),
+  newDeconstructionRecipie: require('./Crafter/newDeconstructionRecipie'),
   getRecipie: require('./Crafter/getRecipie'),
   getCraftables: require('./Crafter/getCraftables'),
   getDeconstructables: require('./Crafter/getDeconstructables'),
+  getDeconstructionRecipie: require('./Crafter/getDeconstructionRecipie'),
   removeRecipie: require('./Crafter/removeRecipie')
 }

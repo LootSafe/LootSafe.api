@@ -30,7 +30,9 @@ const {
   clearAvailability,
   // Crafter
   getRecipie,
+  getDeconstructionRecipie,
   newRecipie,
+  newDeconstructionRecipie,
   getCraftables,
   getDeconstructables,
   removeRecipie
@@ -58,6 +60,7 @@ app.use(_.get(`/v${version}/deconstructables`, getDeconstructables))
 
 
 app.use(_.get(`/v${version}/recipie/get/:item`, getRecipie))
+app.use(_.get(`/v${version}/recipie/deconstruction/get/:item`, getDeconstructionRecipie))
 
 
 // Admin routes
@@ -69,6 +72,8 @@ app.use(_.post(`/v${version}/item/clearAvailability`, clearAvailability))
 // Crafter
 app.use(_.post(`/v${version}/recipie/new`, newRecipie))
 app.use(_.post(`/v${version}/recipie/remove`, removeRecipie))
+
+app.use(_.post(`/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
 
 app.listen(port)
 

@@ -1,11 +1,11 @@
-const { getRecipie } = require('../../controllers')
+const { getDeconstructionRecipie } = require('../../controllers')
 
 /**
- * Get item recipie
+ * Get recipie
  * @route
  */
 module.exports = async (ctx, item) => {
-  const recipie = await getRecipie(item)
+  const recipie = await getDeconstructionRecipie(item)
 
   ctx.body = {
     status: 200,
