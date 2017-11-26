@@ -9,10 +9,6 @@ const bodyParser = require('koa-bodyparser')
 const mongoose = require('mongoose')
 
 const {
-  eth
-} = require('./modules')
-
-const {
   port,
   version,
   debug,
@@ -35,12 +31,14 @@ const {
   newDeconstructionRecipie,
   getCraftables,
   getDeconstructables,
-  removeRecipie
+  removeRecipie,
+  // LootBox
+  addItem,
+  getChances,
+  getLootBoxItems,
+  updateChance,
+  updateLootBoxCost
 } = require('./routes')
-
-const {
-  accessControl
-} = require('./middleware')
 
 mongoose.connect(`mongodb://localhost/${db}`)
 
@@ -58,6 +56,8 @@ app.use(_.get(`/v${version}/item/get/:item`, getItem))
 app.use(_.get(`/v${version}/craftables`, getCraftables))
 app.use(_.get(`/v${version}/deconstructables`, getDeconstructables))
 
+app.use(_.get(`/v${version}/lootbox/chances`, getChances))
+app.use(_.get(`/v${version}/lootbox/items/:rarity`, getLootBoxItems))
 
 app.use(_.get(`/v${version}/recipie/get/:item`, getRecipie))
 app.use(_.get(`/v${version}/recipie/deconstruction/get/:item`, getDeconstructionRecipie))
@@ -72,6 +72,12 @@ app.use(_.post(`/v${version}/item/clearAvailability`, clearAvailability))
 // Crafter
 app.use(_.post(`/v${version}/recipie/new`, newRecipie))
 app.use(_.post(`/v${version}/recipie/remove`, removeRecipie))
+
+
+// LootBox
+app.use(_.post(`/v${version}/lootbox/item/add`, addItem))
+app.use(_.get(`/v${version}/lootbox/chances/update/:epic/:rare/:uncommon`, updateChance))
+app.use(_.get(`/v${version}/lootbox/cost/:cost`, updateLootBoxCost))
 
 app.use(_.post(`/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
 

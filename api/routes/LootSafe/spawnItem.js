@@ -16,7 +16,7 @@ module.exports = async (ctx) => {
   if (access) {
     const items = await getItems()
     const decoded = items.map(item => web3.toUtf8(item))
-    
+
     const req = ctx.request.body
     const name = req.name
     const to = req.to

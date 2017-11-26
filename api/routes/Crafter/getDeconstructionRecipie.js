@@ -5,6 +5,7 @@ const { getDeconstructionRecipie } = require('../../controllers')
  * @route
  */
 module.exports = async (ctx, item) => {
+  // TODO: ensure item is address, and an item in LootSafe
   const recipie = await getDeconstructionRecipie(item)
 
   ctx.body = {

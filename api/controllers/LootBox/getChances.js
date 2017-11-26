@@ -1,11 +1,11 @@
 const { getInstance } = require('../../modules')
 
 /**
- * Get the available items to deconstruct
+ * Get the chances of getting each type of item
  * @route
  */
 module.exports = () => {
   return getInstance('LootSafe').then(async instance => {
-    return instance.getDeconstructables.call()
+    return instance.getChances.call()
   })
 }

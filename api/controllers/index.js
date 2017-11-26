@@ -13,5 +13,11 @@ module.exports = {
   getCraftables: require('./Crafter/getCraftables'),
   getDeconstrucatbles: require('./Crafter/getCraftables'),
   getDeconstructionRecipie: require('./Crafter/getDeconstructionRecipie'),
-  removeRecipie: require('./Crafter/removeRecipie')
+  removeRecipie: require('./Crafter/removeRecipie'),
+  // LootBox
+  addItem: require('./LootBox/addItem'),
+  getChances: require('./LootBox/getChances'),
+  getLootBoxItems: require('./LootBox/getLootBoxItems'),
+  updateChance: require('./LootBox/updateChance'),
+  updateLootBoxCost: require('./LootBox/updateLootBoxCost')
 }

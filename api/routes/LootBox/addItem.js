@@ -1,29 +1,31 @@
-const { removeRecipie } = require('../../controllers')
+const { addItem } = require('../../controllers')
 const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
 
 /**
- * Remove crafting recipie
+ * Add a new crafting recepie
  * @constructor
- * @param {string} item - Item to remove
+ * @param {string} item - item to add to loot table
+ * @param {string} rarity - Rarity of item
  */
 module.exports = async ctx => {
   const req = ctx.request.body
   const item = req.item
+  const rarity = req.rarity
 
-  // TODO: Ensure item is valid address
+  // TODO: Ensure item exists in the stack before executing
 
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
-
   if (access) {
-    const removeRecipieResponse = await removeRecipie(
-      item
+    const addItemRespopnse = await addItem(
+      item,
+      rarity
     )
 
     ctx.body = {
       status: 200,
-      message: 'Recipie removed',
-      data: removeRecipieResponse
+      message: 'New item added to loot table.',
+      data: addItemRespopnse
     }
   } else {
     ctx.body = {
