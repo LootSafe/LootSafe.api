@@ -475,6 +475,228 @@ Create a new game asset
             
 ## Group Lootbox
 
+## Get Chances [/v1/lootbox/chances]
+
+Get lootbox chances
+
+### Get Chances [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Chances fetched",
+            "data": [
+                "1",
+                "3",
+                "30"
+            ]
+        }
+        
+## Get Items [/v1/lootbox/items/common]
+
+Get lootbox items
+
+### Get Items [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Items fetched",
+            "data": [
+                "0xc0c5def23634cfeb9f108b51371831e396e0eb90"
+            ]
+        }
+
+
+## Update Cost [/v1/lootbox/cost/343]
+
+Update Lootbox Cost
+
+### Update Cost [GET]
+
++ Response 200 (application/json)
+
+        
+        {
+            "status": 200,
+            "message": "Updated lootbox cost",
+            "data": {
+                "tx": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                "receipt": {
+                    "transactionHash": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                    "transactionIndex": 0,
+                    "blockHash": "0xa66a1ff79e86053fd165b9b556e83b1176e768d3a4606f17722fee0d493cfc3b",
+                    "blockNumber": 16,
+                    "gasUsed": 43821,
+                    "cumulativeGasUsed": 43821,
+                    "contractAddress": null,
+                    "logs": [
+                        {
+                            "logIndex": 0,
+                            "transactionIndex": 0,
+                            "transactionHash": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                            "blockHash": "0xa66a1ff79e86053fd165b9b556e83b1176e768d3a4606f17722fee0d493cfc3b",
+                            "blockNumber": 16,
+                            "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                            "data": "0x0000000000000000000000000000000000000000000000000000000000000157",
+                            "topics": [
+                                "0xf8eb04e6c43013770ed5585d21a0eb9e40c228e8a53ccf549dc6cbdb8e50f67b"
+                            ],
+                            "type": "mined"
+                        }
+                    ],
+                    "status": 1
+                },
+                "logs": [
+                    {
+                        "logIndex": 0,
+                        "transactionIndex": 0,
+                        "transactionHash": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                        "blockHash": "0xa66a1ff79e86053fd165b9b556e83b1176e768d3a4606f17722fee0d493cfc3b",
+                        "blockNumber": 16,
+                        "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                        "type": "mined",
+                        "event": "CostUpdated",
+                        "args": {
+                            "cost": "343"
+                        }
+                    }
+                ]
+            }
+        }
+        
+        
+## Update Chances [/v1/lootbox/chances/update/1/3/30]
+
+Update chances of getting loot by rarity (epic, rare, uncommon)
+
+### Update Chances [GET]
+
++ Response 200 (application/json)
+
+        
+        {
+            "status": 200,
+            "message": "Updated lootbox cost",
+            "data": {
+                "tx": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                "receipt": {
+                    "transactionHash": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                    "transactionIndex": 0,
+                    "blockHash": "0xa66a1ff79e86053fd165b9b556e83b1176e768d3a4606f17722fee0d493cfc3b",
+                    "blockNumber": 16,
+                    "gasUsed": 43821,
+                    "cumulativeGasUsed": 43821,
+                    "contractAddress": null,
+                    "logs": [
+                        {
+                            "logIndex": 0,
+                            "transactionIndex": 0,
+                            "transactionHash": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                            "blockHash": "0xa66a1ff79e86053fd165b9b556e83b1176e768d3a4606f17722fee0d493cfc3b",
+                            "blockNumber": 16,
+                            "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                            "data": "0x0000000000000000000000000000000000000000000000000000000000000157",
+                            "topics": [
+                                "0xf8eb04e6c43013770ed5585d21a0eb9e40c228e8a53ccf549dc6cbdb8e50f67b"
+                            ],
+                            "type": "mined"
+                        }
+                    ],
+                    "status": 1
+                },
+                "logs": [
+                    {
+                        "logIndex": 0,
+                        "transactionIndex": 0,
+                        "transactionHash": "0x1e8855dad37a92a0df89f9b9d4729095103cd70bdfd43504054994e79d309be0",
+                        "blockHash": "0xa66a1ff79e86053fd165b9b556e83b1176e768d3a4606f17722fee0d493cfc3b",
+                        "blockNumber": 16,
+                        "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                        "type": "mined",
+                        "event": "CostUpdated",
+                        "args": {
+                            "cost": "343"
+                        }
+                    }
+                ]
+            }
+        }
+
+## New Lootbox Item [/v1/lootbox/item/add]
+
+Add a new item to the loot table by rarity
+
+### New Lootbox Item [POST]
+
++ Request (application/json)
+
+    + Headers`
+        
+            key: pWpzWuxoKUKAmlHc0wPi7lFS38FTth
+            otp: ccccccglcrcdfbvrelclvcgjbbkkjtkhcvdbnlljlgke
+    
+    + Body
+
+            {
+                "item": "0xc0c5def23634cfeb9f108b51371831e396e0eb90",
+                "rarity": "common"
+            }
+
+
++ Response 200 (application/json)
+
+        
+        {
+            "status": 200,
+            "message": "New item added to loot table.",
+            "data": {
+                "tx": "0x48f0d7be6f6ff3452a916f3813454cba11ce596640bcb1253bfa9799cd2d0812",
+                "receipt": {
+                    "transactionHash": "0x48f0d7be6f6ff3452a916f3813454cba11ce596640bcb1253bfa9799cd2d0812",
+                    "transactionIndex": 0,
+                    "blockHash": "0xac31e289664c9c8a0596384ca34b5830475798b41931417c9e7396f33a894fc3",
+                    "blockNumber": 14,
+                    "gasUsed": 69892,
+                    "cumulativeGasUsed": 69892,
+                    "contractAddress": null,
+                    "logs": [
+                        {
+                            "logIndex": 0,
+                            "transactionIndex": 0,
+                            "transactionHash": "0x48f0d7be6f6ff3452a916f3813454cba11ce596640bcb1253bfa9799cd2d0812",
+                            "blockHash": "0xac31e289664c9c8a0596384ca34b5830475798b41931417c9e7396f33a894fc3",
+                            "blockNumber": 14,
+                            "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                            "data": "0x000000000000000000000000c0c5def23634cfeb9f108b51371831e396e0eb90",
+                            "topics": [
+                                "0xbb4ccd24eed82a7a2e60176fb55061c57af70aba4003ca2617491c7504a45ef5"
+                            ],
+                            "type": "mined"
+                        }
+                    ],
+                    "status": 1
+                },
+                "logs": [
+                    {
+                        "logIndex": 0,
+                        "transactionIndex": 0,
+                        "transactionHash": "0x48f0d7be6f6ff3452a916f3813454cba11ce596640bcb1253bfa9799cd2d0812",
+                        "blockHash": "0xac31e289664c9c8a0596384ca34b5830475798b41931417c9e7396f33a894fc3",
+                        "blockNumber": 14,
+                        "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                        "type": "mined",
+                        "event": "LootBoxItemAdded",
+                        "args": {
+                            "item": "0xc0c5def23634cfeb9f108b51371831e396e0eb90"
+                        }
+                    }
+                ]
+            }
+        }
+
 ## Group Token
 
 ## Group Trade

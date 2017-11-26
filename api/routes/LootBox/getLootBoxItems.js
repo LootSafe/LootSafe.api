@@ -10,7 +10,7 @@ module.exports = async (ctx, rarity) => {
 
   ctx.body = {
     status: 200,
-    message: 'Chances fetched',
+    message: 'Items fetched',
     data: items
   }
 }

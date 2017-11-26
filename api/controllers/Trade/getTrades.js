@@ -7,6 +7,6 @@ const { getInstance } = require('../../modules')
  */
 module.exports = (merchant) => {
   return getInstance('LootSafe').then(async instance => {
-    return instance.tradeCost.call(merchant)
+    return instance.getTrades.call(merchant)
   })
 }

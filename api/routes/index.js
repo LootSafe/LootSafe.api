@@ -1,3 +1,5 @@
+import { map } from '../../../../../Library/Caches/typescript/2.6/node_modules/@types/async';
+
 module.exports = {
   meta: require('./meta'),
   getTokenAddress: require('./LootSafe/getTokenAddress'),
@@ -19,5 +21,13 @@ module.exports = {
   getChances: require('./LootBox/getChances'),
   getLootBoxItems: require('./LootBox/getLootBoxItems'),
   updateChance: require('./LootBox/updateChance'),
-  updateLootBoxCost: require('./LootBox/updateLootBoxCost')
+  updateLootBoxCost: require('./LootBox/updateLootBoxCost'),
+  // Token
+  balanceOf: require('./Token/balanceOf'),
+  getVaultBalance: require('./Token/getVaultBalance'),
+  // Trade
+  getTrade: require('./Trade/getTrade'),
+  getTradeCost: require('./Trade/getTradeCost'),
+  getTrades: require('./Trade/getTrades'),
+  updateTradeCost: require('./Trade/updateTradeCost')
 }

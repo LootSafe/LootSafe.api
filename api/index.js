@@ -37,7 +37,15 @@ const {
   getChances,
   getLootBoxItems,
   updateChance,
-  updateLootBoxCost
+  updateLootBoxCost,
+  // Token
+  balanceOf,
+  getVaultBalance,
+  // Trade
+  getTrade,
+  getTrades,
+  getTradeCost,
+  updateTradeCost
 } = require('./routes')
 
 mongoose.connect(`mongodb://localhost/${db}`)
@@ -62,6 +70,12 @@ app.use(_.get(`/v${version}/lootbox/items/:rarity`, getLootBoxItems))
 app.use(_.get(`/v${version}/recipie/get/:item`, getRecipie))
 app.use(_.get(`/v${version}/recipie/deconstruction/get/:item`, getDeconstructionRecipie))
 
+app.use(_.get(`/v${version}/token/balance/:address`, balanceOf))
+app.use(_.get(`/v${version}/token/vault/balance`, getVaultBalance))
+
+app.use(_.get(`/v${version}/trade/get/:merchant/:tradeid`, getTrade))
+app.use(_.get(`/v${version}/trades/get/:merchant`, getTrades))
+app.use(_.get(`/v${version}/trade/cost`, getTradeCost))
 
 // Admin routes
 // Core
@@ -78,6 +92,10 @@ app.use(_.post(`/v${version}/recipie/remove`, removeRecipie))
 app.use(_.post(`/v${version}/lootbox/item/add`, addItem))
 app.use(_.get(`/v${version}/lootbox/chances/update/:epic/:rare/:uncommon`, updateChance))
 app.use(_.get(`/v${version}/lootbox/cost/:cost`, updateLootBoxCost))
+
+// Trade
+app.use(_.get(`/v${version}/trade/cost/:cost`, updateTradeCost))
+
 
 app.use(_.post(`/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
 
