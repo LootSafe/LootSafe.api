@@ -1,7 +1,7 @@
 const { addItem } = require('../../controllers')
 const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
-
+const { addressExists } = require('../../modules')
 /**
  * Add a new crafting recepie
  * @constructor
@@ -13,19 +13,26 @@ module.exports = async ctx => {
   const item = req.item
   const rarity = req.rarity
 
-  // TODO: Ensure item exists in the stack before executing
+  const itemExists = await addressExists(item)
 
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
-    const addItemRespopnse = await addItem(
-      item,
-      rarity
-    )
+    if (itemExists) {
+      const addItemRespopnse = await addItem(
+        item,
+        rarity
+      )
 
-    ctx.body = {
-      status: 200,
-      message: 'New item added to loot table.',
-      data: addItemRespopnse
+      ctx.body = {
+        status: 200,
+        message: 'New item added to loot table.',
+        data: addItemRespopnse
+      }
+    } else {
+      ctx.body = {
+        status: 404,
+        message: 'An item by the supplied address does not exist.'
+      }
     }
   } else {
     ctx.body = {

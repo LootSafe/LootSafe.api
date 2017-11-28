@@ -24,6 +24,7 @@ const {
   getItem,
   spawnItem,
   clearAvailability,
+  getItemAddresses,
   // Crafter
   getRecipie,
   getDeconstructionRecipie,
@@ -60,6 +61,7 @@ app.use(_.get(`/v${version}/`, meta))
 app.use(_.get(`/v${version}/address/token`, getTokenAddress))
 app.use(_.get(`/v${version}/item/list`, getItems))
 app.use(_.get(`/v${version}/item/get/:item`, getItem))
+app.use(_.get(`/v${version}/item/addresses/get`, getItemAddresses))
 
 app.use(_.get(`/v${version}/craftables`, getCraftables))
 app.use(_.get(`/v${version}/deconstructables`, getDeconstructables))

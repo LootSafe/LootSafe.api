@@ -3,6 +3,7 @@ const Web3 = require('web3')
 const web3 = new Web3()
 const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
+const { addressExists } = require('../../modules')
 
 /**
  * Give an item to a player
@@ -12,7 +13,7 @@ const checkAccess = require('../../middleware/accessControl')
  */
 module.exports = async (ctx) => {
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
-
+  
   if (access) {
     const items = await getItems()
     const decoded = items.map(item => web3.toUtf8(item))

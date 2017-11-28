@@ -1,5 +1,3 @@
-import { map } from '../../../../../Library/Caches/typescript/2.6/node_modules/@types/async';
-
 module.exports = {
   meta: require('./meta'),
   getTokenAddress: require('./LootSafe/getTokenAddress'),
@@ -8,6 +6,7 @@ module.exports = {
   getItem: require('./LootSafe/getItem'),
   spawnItem: require('./LootSafe/spawnItem'),
   clearAvailability: require('./LootSafe/clearAvailability'),
+  getItemAddresses: require('./LootSafe/getItemAddresses'),
   // Crafter
   newRecipie: require('./Crafter/newRecipie'),
   newDeconstructionRecipie: require('./Crafter/newDeconstructionRecipie'),

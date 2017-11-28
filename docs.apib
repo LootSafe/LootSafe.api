@@ -93,12 +93,12 @@ Create a new recipie
 
             {
                 "result": "0x0",
-                materials: [
+                "materials": [
                     "0x01",
                     "0x02",
                     "0x03"
                 ],
-                counts: [
+                "counts": [
                     2,
                     5
                     3
@@ -106,7 +106,7 @@ Create a new recipie
             }
 
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Body
 
@@ -153,7 +153,7 @@ Remove a recipie
             }
 
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Body
 
@@ -230,12 +230,86 @@ Get the address of the token contract
             "tokenAddress": "0x6b5f2b72ed649a5018701eb2b71c4fd8f472595c"
         }
  
+ 
+## New Item [/v1/item/new]
+
+Create a new item on the network
+
+### Create a New Item [POST]
+
++ Request (application/json)
+
+    + Headers
+        
+            key: pWpzWuxoKUKAmlHc0wPi7lFS38FTth
+            otp: ccccccglcrcdfbvrelclvcgjbbkkjtkhcvdbnlljlgke
+    
+    + Body
+
+            {
+                "name": "0x00000f",
+                "id": "shield",
+                "totalSupply": 120000
+            }
+
+
++ Response 200 (application/json)
+
+    + Body
+      
+            {
+                "status": 200,
+                "message": "Created new item",
+                "data": {
+                    "tx": "0xb821ce36f9a38d74e10e5b0a2579b0843862e7e3e4265d55f8b7637110fc0717",
+                    "receipt": {
+                        "transactionHash": "0xb821ce36f9a38d74e10e5b0a2579b0843862e7e3e4265d55f8b7637110fc0717",
+                        "transactionIndex": 0,
+                        "blockHash": "0xca21919fd1b8e87913db669070ff2b790dbc9939204be202ddca022ed531ccca",
+                        "blockNumber": 12,
+                        "gasUsed": 760586,
+                        "cumulativeGasUsed": 760586,
+                        "contractAddress": null,
+                        "logs": [
+                            {
+                                "logIndex": 0,
+                                "transactionIndex": 0,
+                                "transactionHash": "0xb821ce36f9a38d74e10e5b0a2579b0843862e7e3e4265d55f8b7637110fc0717",
+                                "blockHash": "0xca21919fd1b8e87913db669070ff2b790dbc9939204be202ddca022ed531ccca",
+                                "blockNumber": 12,
+                                "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                                "data": "0x000000000000000000000000c0c5def23634cfeb9f108b51371831e396e0eb90",
+                                "topics": [
+                                    "0xc84c1949c25c3720439bdbb249aef7fe95085fe4af1820022b566cd94d671848"
+                                ],
+                                "type": "mined"
+                            }
+                        ],
+                        "status": 1
+                    },
+                    "logs": [
+                        {
+                            "logIndex": 0,
+                            "transactionIndex": 0,
+                            "transactionHash": "0xb821ce36f9a38d74e10e5b0a2579b0843862e7e3e4265d55f8b7637110fc0717",
+                            "blockHash": "0xca21919fd1b8e87913db669070ff2b790dbc9939204be202ddca022ed531ccca",
+                            "blockNumber": 12,
+                            "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
+                            "type": "mined",
+                            "event": "ItemCreated",
+                            "args": {
+                                "itemAddress": "0xc0c5def23634cfeb9f108b51371831e396e0eb90"
+                            }
+                        }
+                    ]
+                }
+            }
 
 ## Spawn Item [/v1/item/spawn]
 
 Give an address one item
 
-### Create a New Item [POST]
+### Spawn a New Item [POST]
 
 + Request (application/json)
 
@@ -252,7 +326,7 @@ Give an address one item
             }
 
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Body
       
@@ -342,7 +416,7 @@ Clear remaining un-distrobuted supply of item
             }
 
 
-+ Response 201 (application/json)
++ Response 200 (application/json)
 
     + Body
     
@@ -396,82 +470,6 @@ Clear remaining un-distrobuted supply of item
             }
 
 
-## Create Item [/v1/item/new]
-
-Create a new game asset
-
-### Create a New Item [POST]
-
-+ Request (application/json)
-
-    + Headers
-        
-            key: pWpzWuxoKUKAmlHc0wPi7lFS38FTth
-            otp: ccccccglcrcdfbvrelclvcgjbbkkjtkhcvdbnlljlgke
-    
-    + Body
-
-            {
-                "name": "0x00000f",
-                "id": "0x00000f",
-                "totalSupply": 120000,
-                "metadata": "Optional",
-                "skin": "Optional"
-            }
-
-
-+ Response 201 (application/json)
-
-    + Body
-
-            {
-                "status": 200,
-                "message": "Created new item",
-                "tx": {
-                    "tx": "0x590906402b635445f6198a739933b11180debf04f2b15ec665ea35a61dcdcae3",
-                    "receipt": {
-                        "transactionHash": "0x590906402b635445f6198a739933b11180debf04f2b15ec665ea35a61dcdcae3",
-                        "transactionIndex": 0,
-                        "blockHash": "0x98f8c912d054af9eb3763192475aab25a1c7683cd00f31b95dd5b231e63dd338",
-                        "blockNumber": 21,
-                        "gasUsed": 729974,
-                        "cumulativeGasUsed": 729974,
-                        "contractAddress": null,
-                        "logs": [
-                            {
-                                "logIndex": 0,
-                                "transactionIndex": 0,
-                                "transactionHash": "0x590906402b635445f6198a739933b11180debf04f2b15ec665ea35a61dcdcae3",
-                                "blockHash": "0x98f8c912d054af9eb3763192475aab25a1c7683cd00f31b95dd5b231e63dd338",
-                                "blockNumber": 21,
-                                "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
-                                "data": "0x0000000000000000000000008867a31f7f3f240fb82468ab109f732fe21fcd38",
-                                "topics": [
-                                    "0xc84c1949c25c3720439bdbb249aef7fe95085fe4af1820022b566cd94d671848"
-                                ],
-                                "type": "mined"
-                            }
-                        ],
-                        "status": 1
-                    },
-                    "logs": [
-                        {
-                            "logIndex": 0,
-                            "transactionIndex": 0,
-                            "transactionHash": "0x590906402b635445f6198a739933b11180debf04f2b15ec665ea35a61dcdcae3",
-                            "blockHash": "0x98f8c912d054af9eb3763192475aab25a1c7683cd00f31b95dd5b231e63dd338",
-                            "blockNumber": 21,
-                            "address": "0x30753e4a8aad7f8597332e813735def5dd395028",
-                            "type": "mined",
-                            "event": "ItemCreated",
-                            "args": {
-                                "itemAddress": "0x8867a31f7f3f240fb82468ab109f732fe21fcd38"
-                            }
-                        }
-                    ]
-                }
-            }
-            
             
 ## Group Lootbox
 
@@ -509,6 +507,20 @@ Get lootbox items
             ]
         }
 
+
+## Get cost [/v1/lootbox/cost]
+
+Get lootbox cost
+
+### Get Cost [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Cost fetched",
+            "data": 1
+        }
 
 ## Update Cost [/v1/lootbox/cost/343]
 
@@ -633,7 +645,7 @@ Add a new item to the loot table by rarity
 
 + Request (application/json)
 
-    + Headers`
+    + Headers
         
             key: pWpzWuxoKUKAmlHc0wPi7lFS38FTth
             otp: ccccccglcrcdfbvrelclvcgjbbkkjtkhcvdbnlljlgke
@@ -696,7 +708,37 @@ Add a new item to the loot table by rarity
                 ]
             }
         }
-
+        
+        
 ## Group Token
+
+## Get balance [/v1/token/balance/0x0]
+
+Get address balance
+
+### Get Balance [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Balance fetched",
+            "data": 1
+        }
+        
+## Get vault balance [/v1/token/vault/balance]
+
+Get vault balance
+
+### Get Vault Balance [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Vault balance fetched",
+            "data": 1
+        }
+
 
 ## Group Trade
