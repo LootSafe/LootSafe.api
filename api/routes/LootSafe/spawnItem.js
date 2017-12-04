@@ -25,7 +25,7 @@ module.exports = async (ctx) => {
     if (decoded.includes(name)) {
       const spawnItemResponse = await spawnItem(name, to)
       ctx.body = {
-        status: 404,
+        status: 200,
         message: "Spawned one item",
         data: spawnItemResponse
       }

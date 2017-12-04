@@ -7,6 +7,7 @@ const logger = require('koa-logger')
 const app = new Koa()
 const bodyParser = require('koa-bodyparser')
 const mongoose = require('mongoose')
+const cors = require('koa-cors')
 
 const {
   port,
@@ -46,11 +47,14 @@ const {
   getTrade,
   getTrades,
   getTradeCost,
-  updateTradeCost
+  updateTradeCost,
+  // Events
+  fetchEvents
 } = require('./routes')
 
 mongoose.connect(`mongodb://localhost/${db}`)
 
+app.use(cors())
 app.use(bodyParser())
 // Log routes being hit and returned if debug mode
 if (debug) app.use(logger())
@@ -98,6 +102,8 @@ app.use(_.get(`/v${version}/lootbox/cost/:cost`, updateLootBoxCost))
 // Trade
 app.use(_.get(`/v${version}/trade/cost/:cost`, updateTradeCost))
 
+// Events
+app.use(_.get(`/v${version}/events`, fetchEvents))
 
 app.use(_.post(`/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
 

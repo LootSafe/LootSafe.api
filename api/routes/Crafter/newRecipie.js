@@ -16,7 +16,7 @@ module.exports = async ctx => {
   const counts = req.counts.map(i => parseInt(i))
 
   // TODO: Ensure addresses are valid, and item, and rewards, exist in the system
-
+  
 
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {

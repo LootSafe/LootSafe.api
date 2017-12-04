@@ -22,7 +22,7 @@ module.exports = async (ctx) => {
     if (decoded.includes(name)) {
       const clearAvailabilityResponse = await clearAvailability(name)
       ctx.body = {
-        status: 404,
+        status: 200,
         message: "Cleared available supply of item",
         data: clearAvailabilityResponse
       }

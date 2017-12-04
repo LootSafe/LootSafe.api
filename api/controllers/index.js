@@ -29,5 +29,7 @@ module.exports = {
   getTrade: require('./Trade/getTrade'),
   getTradeCost: require('./Trade/getTradeCost'),
   getTrades: require('./Trade/getTrades'),
-  updateTradeCost: require('./Trade/updateTradeCost')
+  updateTradeCost: require('./Trade/updateTradeCost'),
+  // Events
+  fetchEvents: require('./Event/fetchEvents')
 }
