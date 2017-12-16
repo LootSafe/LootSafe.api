@@ -7,6 +7,7 @@ module.exports = {
   spawnItem: require('./LootSafe/spawnItem'),
   clearAvailability: require('./LootSafe/clearAvailability'),
   getItemAddresses: require('./LootSafe/getItemAddresses'),
+  getItemByAddress: require('./LootSafe/getItemByAddress'),
   // Crafter
   newRecipie: require('./Crafter/newRecipie'),
   newDeconstructionRecipie: require('./Crafter/newDeconstructionRecipie'),

@@ -35,9 +35,6 @@ Get metadata about the api
             "CoreToken": "0xfb88de099e13c3ed21f80a7a1e49f8caecf10df6"
           }
         }
-
-## Group Crafting
-
 ## List Items [/v1/item/list]
 
 Get a list of the uint8 names of items in the system
@@ -58,6 +55,10 @@ Get a list of the uint8 names of items in the system
                 ""
             ]
         }
+
+
+## Group Crafting
+
 
 ## List Craftable Items [/v1/craftables]
 
@@ -739,6 +740,56 @@ Get vault balance
             "message": "Vault balance fetched",
             "data": 1
         }
-
-
 ## Group Trade
+
+## Get trades by merchant [/v1/trade/0x0000000000...]
+
+Get trades by merchant address
+
+### Get Trades [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Trades fetched",
+            "data": [
+                "0x00000f0000000000"
+            ]
+        }
+        
+## Get trade cost [/v1/trade/cost]
+
+Get trade cost (in tokens)
+
+### Get Cost [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Trade cost fetched",
+            "data": "0"
+        }
+        
+## Update Trade Cost [/v1/trade/cost/55]
+
+Update the cost in tokens to trade
+
+
+### Update Trade Cost [GET]
+
++ Request (application/json)
+
+    + Headers
+        
+            key: pWpzWuxoKUKAmlHc0wPi7lFS38FTth
+            otp: ccccccglcrcdfbvrelclvcgjbbkkjtkhcvdbnlljlgke
+ 
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Trade cost fetched",
+            "data": "0"
+        }

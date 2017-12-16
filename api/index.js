@@ -26,6 +26,7 @@ const {
   spawnItem,
   clearAvailability,
   getItemAddresses,
+  getItemByAddress,
   // Crafter
   getRecipie,
   getDeconstructionRecipie,
@@ -65,6 +66,7 @@ app.use(_.get(`/v${version}/`, meta))
 app.use(_.get(`/v${version}/address/token`, getTokenAddress))
 app.use(_.get(`/v${version}/item/list`, getItems))
 app.use(_.get(`/v${version}/item/get/:item`, getItem))
+app.use(_.get(`/v${version}/item/get/address/:address`, getItemByAddress))
 app.use(_.get(`/v${version}/item/addresses/get`, getItemAddresses))
 
 app.use(_.get(`/v${version}/craftables`, getCraftables))
@@ -92,6 +94,7 @@ app.use(_.post(`/v${version}/item/clearAvailability`, clearAvailability))
 // Crafter
 app.use(_.post(`/v${version}/recipie/new`, newRecipie))
 app.use(_.post(`/v${version}/recipie/remove`, removeRecipie))
+app.use(_.post(`/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
 
 
 // LootBox
@@ -105,7 +108,6 @@ app.use(_.get(`/v${version}/trade/cost/:cost`, updateTradeCost))
 // Events
 app.use(_.get(`/v${version}/events`, fetchEvents))
 
-app.use(_.post(`/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
 
 app.listen(port)
 

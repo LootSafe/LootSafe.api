@@ -5,10 +5,9 @@ const { getInstance } = require('../../modules')
  * @constructor
  * @param {string} item - The item name
  */
-module.exports = async (item, address) => {
+module.exports = async (address) => {
   return getInstance('LootSafe').then(async instance => {
-    const itemAddress = await instance.getItem.call(item)
-    const itemInstance = await getInstance('Item', itemAddress)
+    const itemInstance = await getInstance('Item', address)
 
     const id = await itemInstance.id.call()
     const skin = await itemInstance.skin.call()
@@ -21,7 +20,7 @@ module.exports = async (item, address) => {
     const vault = await itemInstance.vault.call()
 
     return {
-      address: itemAddress,
+      address: address,
       id,
       skin,
       metadata,
