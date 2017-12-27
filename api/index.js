@@ -50,7 +50,10 @@ const {
   getTradeCost,
   updateTradeCost,
   // Events
-  fetchEvents
+  fetchEvents,
+  // Balance
+  tokenBalance,
+  itemBalance
 } = require('./routes')
 
 mongoose.connect(`mongodb://localhost/${db}`)
@@ -84,6 +87,9 @@ app.use(_.get(`/v${version}/token/vault/balance`, getVaultBalance))
 app.use(_.get(`/v${version}/trade/get/:merchant/:tradeid`, getTrade))
 app.use(_.get(`/v${version}/trades/get/:merchant`, getTrades))
 app.use(_.get(`/v${version}/trade/cost`, getTradeCost))
+
+app.use(_.get(`/v${version}/balance/token/:address`, balanceOf))
+app.use(_.get(`/v${version}/balance/item/:item/:address`, itemBalance))
 
 // Admin routes
 // Core
