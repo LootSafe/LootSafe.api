@@ -8,6 +8,7 @@
     "full": "npm run deploy && npm start",
     "start": "node api",
     "deploy": "cd contracts && truffle compile && truffle migrate",
+    "testrpc": "ganache-cli -l 0x134250805",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -37,6 +38,7 @@
     "password-hash": "^1.2.2",
     "qrcode-terminal": "^0.11.0",
     "strip-ansi": "^4.0.0",
+    "truffle": "^3.4.7",
     "truffle-contract": "^3.0.1",
     "web3": "^0.18.4",
     "yubikey": "0.0.2"
