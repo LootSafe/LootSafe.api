@@ -35,27 +35,6 @@ Get metadata about the api
             "CoreToken": "0xfb88de099e13c3ed21f80a7a1e49f8caecf10df6"
           }
         }
-## List Items [/v1/item/list]
-
-Get a list of the uint8 names of items in the system
-
-### List Items [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "status": 200,
-            "message": "Items fetched",
-            "items": [
-                "0x536869656c640000",
-                "0x00000f0000000000"
-            ],
-            "decoded": [
-                "Shield",
-                ""
-            ]
-        }
-
 
 ## Group Crafting
 
@@ -204,6 +183,68 @@ Get a recipie
 
 ## Group Items
 
+## List Items [/v1/item/list]
+
+Get a list of the uint8 names of items in the system
+
+### List Items [GET]
+
++ Response 200 (application/json)
+
+        {
+            "status": 200,
+            "message": "Items fetched",
+            "items": [
+                "0x536869656c640000",
+                "0x00000f0000000000"
+            ],
+            "decoded": [
+                "Shield",
+                ""
+            ]
+        }
+        
+## List Ledger [/v1/item/ledger]
+
+Get a list of the items, and data from items
+
+### List Ledger [GET]
+
++ Response 200 (application/json)
+
+         
+        
+        {
+            "status": 200,
+            "message": "Items fetched",
+            "data": [
+                {
+                    "address": "0x84b0a9e566b73277692707852c01018c11c62a7d",
+                    "id": "0x736869656c640000000000000000000000000000000000000000000000000000",
+                    "skin": "0x64656661756c7400000000000000000000000000000000000000000000000000",
+                    "metadata": "no_metadata",
+                    "created": "1513656396",
+                    "owner": "0x5759fbaf72597c61f0e44c499896efe34b46871f",
+                    "symbol": "0x5341564500000000",
+                    "totalSupply": "120000",
+                    "finalSupply": "1",
+                    "vault": "0"
+                },
+                {
+                    "address": "0x994d3972bfba7c22be9eafc996e46bffea084102",
+                    "id": "0x73776f7264000000000000000000000000000000000000000000000000000000",
+                    "skin": "0x64656661756c7400000000000000000000000000000000000000000000000000",
+                    "metadata": "no_metadata",
+                    "created": "1513656876",
+                    "owner": "0x5759fbaf72597c61f0e44c499896efe34b46871f",
+                    "symbol": "0x5341564500000000",
+                    "totalSupply": "120000",
+                    "finalSupply": "0",
+                    "vault": "0"
+                }
+            ]
+        }
+
 ## Get Item [/v1/item/get/Shield]
 
 Get a specific items address
@@ -322,7 +363,7 @@ Give an address one item
     + Body
 
             {
-                "name": "0x00000f",
+                "itemAddress": "0x00000000000000000000000000",
                 "to": "0x1337c0de2ce6f6f75044ebaf22449db048faec5d",
             }
 
@@ -413,7 +454,7 @@ Clear remaining un-distrobuted supply of item
     + Body
 
             {
-                "name": "0x00000f"
+                "itemAddress": "0x0"
             }
 
 
@@ -792,4 +833,25 @@ Update the cost in tokens to trade
             "status": 200,
             "message": "Trade cost fetched",
             "data": "0"
+        }
+        
+## Get trade  [/v1/trade/get/0xa9b93a905362b71572599aca64526cfafaa6a454/0x0000000005aba15d]
+
+Get trade
+
+### Get Trade [GET]
+
++ Response 200 (application/json)
+        
+        {
+            "status": 200,
+            "message": "Trade fetched",
+            "data": [
+                "0x0000000005aba15d",
+                "0x47a13aa3e6a2beb4450c95ded06e25d9e2643ca9",
+                "0x1cb3fcf389772f9b68e1a178a2506782c160a4c3",
+                "1",
+                "2",
+                false
+            ]
         }

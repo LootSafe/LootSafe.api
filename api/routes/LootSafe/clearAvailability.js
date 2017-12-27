@@ -7,7 +7,7 @@ const checkAccess = require('../../middleware/accessControl')
 /**
  * Clear future distrobution of an item
  * @constructor
- * @param {string} name - The name of the item
+ * @param {string} itemAddress - The address of the item
  */
 module.exports = async (ctx) => {
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
@@ -16,22 +16,23 @@ module.exports = async (ctx) => {
     const decoded = items.map(item => web3.toUtf8(item))
     
     const req = ctx.request.body
-    const name = req.name
+    const itemAddress = req.itemAddress
     const to = req.to
 
-    if (decoded.includes(name)) {
-      const clearAvailabilityResponse = await clearAvailability(name)
+    // TODO fix this
+    //if (decoded.includes(name)) {
+      const clearAvailabilityResponse = await clearAvailability(itemAddress)
       ctx.body = {
         status: 200,
         message: "Cleared available supply of item",
         data: clearAvailabilityResponse
       }
-    } else {
+    /*} else {
       ctx.body = {
         status: 404,
         message: 'Item not found'
       }
-    }
+    }*/
   } else {
     ctx.body = {
       status: 401,

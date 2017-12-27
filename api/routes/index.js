@@ -8,6 +8,7 @@ module.exports = {
   clearAvailability: require('./LootSafe/clearAvailability'),
   getItemAddresses: require('./LootSafe/getItemAddresses'),
   getItemByAddress: require('./LootSafe/getItemByAddress'),
+  ledger: require('./LootSafe/ledger'),
   // Crafter
   newRecipie: require('./Crafter/newRecipie'),
   newDeconstructionRecipie: require('./Crafter/newDeconstructionRecipie'),
@@ -34,5 +35,6 @@ module.exports = {
   fetchEvents: require('./Event/fetchEvents'),
   // Balance
   tokenBalance: require('./Balance/tokenBalance'),
-  itemBalance: require('./Balance/itemBalance')
+  itemBalance: require('./Balance/itemBalance'),
+  allBalances: require('./Balance/allBalances')
 }

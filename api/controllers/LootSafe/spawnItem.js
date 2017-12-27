@@ -8,13 +8,13 @@ const {
 /**
  * Give an item to a player
  * @constructor
- * @param {string} name - The name of the item
+ * @param {string} itemAddress - The address of the item
  * @param {string} to - The address to send to
  */
-module.exports = (name, to = '0x0') => {
+module.exports = (itemAddress, to = '0x0') => {
   return getInstance('LootSafe').then(instance => {
     return instance.spawnItem(
-      name,
+      itemAddress,
       to,
       {gas: 3000000, from: ethereum.account}
     )

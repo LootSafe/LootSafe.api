@@ -1,4 +1,5 @@
 const { simpleCall, getInstance } = require('../../modules')
+const getItem = require('../LootSafe/getItem')
 
 /**
  * Get the balances from all items
@@ -6,16 +7,20 @@ const { simpleCall, getInstance } = require('../../modules')
  */
 module.exports = (address) => {
   return simpleCall('LootSafe', 'getItems').then(items => {
-    console.log('items')
-    return Promise.all([
-      ...items.map(item => {
-        console.log('item')
-        return getInstance('Item', item).then(async instance => {
-          return {
-            [item]: instance.balanceOf.call(address)
-          }
-        })
+    return simpleCall('LootSafe', 'getItems').then(data => {
+      return Promise.all([...data.map(item => getItem(item))]).then(items => {
+        return Promise.all([
+          ...items.map(item => {
+            return getInstance('Item', item.address).then(async instance => {
+              return instance.balanceOf.call(address).then(balance => {
+                return {
+                  [item.address]: balance
+                }
+              })
+            })
+          })
+        ])
       })
-    ])
+    })
   })
 }
