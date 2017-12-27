@@ -19,22 +19,22 @@ module.exports = async (ctx) => {
     const decoded = items.map(item => web3.toUtf8(item))
 
     const req = ctx.request.body
-    const name = req.name
+    const itemAddress = req.itemAddress
     const to = req.to
 
-    if (decoded.includes(name)) {
-      const spawnItemResponse = await spawnItem(name, to)
+    //if (decoded.includes(name)) {
+      const spawnItemResponse = await spawnItem(itemAddress, to)
       ctx.body = {
         status: 200,
         message: "Spawned one item",
         data: spawnItemResponse
       }
-    } else {
+    /*} else {
       ctx.body = {
         status: 404,
         message: 'Item not found'
       }
-    }
+    }*/
   } else {
     ctx.body = {
       status: 401,

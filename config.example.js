@@ -7,6 +7,8 @@ module.exports = {
   port: 1337,
   version: 1,
   debug: true,
+  cacheInterval: 100000,
+  prefix: 'raptorstrike',  
   db: 'LootSafe',  
   ethereum: {
     account: web3.eth.accounts[0],

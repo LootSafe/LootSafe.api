@@ -8,12 +8,12 @@ const {
 /**
  * Clear future distrobution of an item
  * @constructor
- * @param {string} name - The name of the item
+ * @param {string} itemAddress - The name of the item
  */
-module.exports = (name) => {
+module.exports = (itemAddress) => {
   return getInstance('LootSafe').then(instance => {
     return instance.clearAvailability(
-      name,
+      itemAddress,
       {gas: 3000000, from: ethereum.account}
     )
   })

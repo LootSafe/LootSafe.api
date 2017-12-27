@@ -8,7 +8,8 @@
     "full": "npm run deploy && npm start",
     "start": "node api",
     "deploy": "cd contracts && truffle compile && truffle migrate",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "populate": "node ./debug/populate"
   },
   "repository": {
     "type": "git",
