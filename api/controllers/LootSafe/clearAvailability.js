@@ -1,8 +1,7 @@
 const { getInstance } = require('../../modules')
 
 const {
-  ethereum,
-  addresses
+  ethereum
 } = require('../../../config')
 
 /**
@@ -27,4 +26,3 @@ module.exports = (itemAddress) => {
 // 888    o.  )88b 888   888 888   .o8  888  888    .o   888 .    `888'
 // o888o   8""888P' `Y8bod8P' `Y8bod8P' o888o `Y8bod8P'   "888"      d8'
 //                                                             .o...P'
-

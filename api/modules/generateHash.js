@@ -1,21 +1,22 @@
-const { accessControl } = require('../../config')
 const phash = require('password-hash')
 const chalk = require('chalk')
 const qrcode = require('qrcode-terminal')
 
-const crypto = require('crypto');
+const crypto = require('crypto')
 const ethUtils = require('ethereumjs-util')
 
-const getRandomWallet = function() {
-    const randbytes = crypto.randomBytes(32);
-    const address = '0x' + ethUtils.privateToAddress(randbytes).toString('hex');
-    return { address: address, privKey: randbytes.toString('hex') }
+const getRandomWallet = function () {
+  const randbytes = crypto.randomBytes(32)
+  const address = '0x' + ethUtils.privateToAddress(randbytes).toString('hex')
+  return {
+    address: address,
+    privKey: randbytes.toString('hex')
+  }
 }
 
 const pass = getRandomWallet().privKey
 
 const hash = phash.generate(pass)
-
 
 console.log(
   qrcode.generate(pass, {small: true})

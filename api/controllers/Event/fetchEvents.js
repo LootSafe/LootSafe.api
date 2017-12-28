@@ -1,4 +1,3 @@
-const { getInstance } = require('../../modules')
 const { EventSchema } = require('../../schemas')
 
 /**
@@ -8,6 +7,9 @@ const { EventSchema } = require('../../schemas')
 module.exports = () => {
   return new Promise(resolve => {
     EventSchema.find((err, events) => {
+      if (err) {
+        console.log('Error fetching events', err)
+      }
       resolve(events)
     })
   })

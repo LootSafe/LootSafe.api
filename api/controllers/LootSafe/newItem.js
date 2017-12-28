@@ -1,8 +1,7 @@
 const { getInstance } = require('../../modules')
 
 const {
-  ethereum,
-  addresses
+  ethereum
 } = require('../../../config')
 
 /**

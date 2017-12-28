@@ -15,7 +15,7 @@ const ItemSchema = mongoose.Schema({
   },
   metadata: {
     type: String,
-    default: "no_metadata"
+    default: 'no_metadata'
   },
   created: {
     type: Number,

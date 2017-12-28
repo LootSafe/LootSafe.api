@@ -7,7 +7,6 @@ const {
 const provider = new Web3.providers.HttpProvider(ethereum.provider)
 const web3 = new Web3(provider)
 
-
 const {
   name,
   version,
@@ -27,7 +26,7 @@ module.exports = (ctx) => {
     version,
     author,
     license,
-    ['uptime(ms)']: Date.now() - uptime,
+    'uptime(ms)': Date.now() - uptime,
     ethereum,
     contracts
   }

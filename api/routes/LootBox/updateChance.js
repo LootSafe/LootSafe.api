@@ -1,5 +1,4 @@
 const { updateChance } = require('../../controllers')
-const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
 
 /**

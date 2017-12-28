@@ -2,6 +2,9 @@ const { EventSchema } = require('../schemas')
 
 module.exports = (event) => {
   EventSchema.findOne({ transactionHash: event.transactionHash }, (err, e) => {
+    if (err) {
+      console.log('Error saving event', err)
+    }
     if (!e) {
       const newEvent = new EventSchema({
         logIndex: event.logIndex,

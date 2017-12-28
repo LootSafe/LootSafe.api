@@ -50,14 +50,16 @@ const cacheItems = () => {
 
           console.log('itemData', itemData)
 
-          itemData.save((err) => {
+          itemData.save(err => {
+            if (err) {
+              console.log('Error saving item', err)
+            }
             console.log(chalk.yellow('Saved item', item.address))
           })
         }
       })
     })
   })
-
 }
 
 module.exports = cacheItems
