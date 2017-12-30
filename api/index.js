@@ -1,6 +1,6 @@
 const chalk = require('chalk')
 const ngrok = require('ngrok')
-const package = require('../package.json')
+const pkg = require('../package.json')
 const _ = require('koa-route')
 const Koa = require('koa')
 const logger = require('koa-logger')
@@ -91,13 +91,11 @@ app.use(_.get(`${prefix}/v${version}/item/get/address/:address`, getItemByAddres
 app.use(_.get(`${prefix}/v${version}/item/addresses/get`, getItemAddresses))
 app.use(_.get(`${prefix}/v${version}/item/ledger`, ledger))
 
-
 // *******************
 // ----- LootBox -----
 // *******************
 app.use(_.get(`${prefix}/v${version}/lootbox/chances`, getChances))
 app.use(_.get(`${prefix}/v${version}/lootbox/items/:rarity`, getLootBoxItems))
-
 
 // *******************
 // ---- Crafting -----
@@ -165,21 +163,26 @@ app.listen(port)
 console.log(
   chalk.bold(
     chalk.green(
-      `${package.name} ${prefix}/v${version} listening on port ${port}`.toUpperCase(),
+      `${pkg.name} ${prefix}/v${version} listening on port ${port}`.toUpperCase(),
       chalk.blue(`http://localhost:${port}/${prefix}/v${version}/`)
     )
   )
 )
 
-if (debug) ngrok.connect(9090, (err, url) => {
-  console.log(
-    chalk.bold(
-      chalk.gray(
-        `Debug Enabled, ngrok available at`.toUpperCase(),
-        url
+if (debug) {
+  ngrok.connect(9090, (err, url) => {
+    if (err) {
+      console.log('Error connecting ngrok', err)
+    }
+    console.log(
+      chalk.bold(
+        chalk.gray(
+          `Debug Enabled, ngrok available at`.toUpperCase(),
+          url
+        )
       )
     )
-  )
-})
+  })
+}
 
 require('./watchers')

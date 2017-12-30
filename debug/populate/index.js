@@ -43,10 +43,8 @@ const items = [
 ]
 
 const {
-  ethereum,
-  addresses
+  ethereum
 } = require('../../config')
-
 
 console.log(
   chalk.green('Adding items')
@@ -112,6 +110,44 @@ setTimeout(() => {
       ).then(tx => {
         console.log(
           `${chalk.green('Trade created')} ${chalk.blue(ethereum.account)}`
+        )
+      })
+    })
+  }, 5000)
+
+  setTimeout(() => {
+    getInstance('LootSafe').then(instance => {
+      instance.newRecipie(
+        itemAddresses['ak47'],
+        [
+          itemAddresses['ump45']
+        ],
+        [
+          2
+        ],
+        {gas: 3000000, from: ethereum.account}
+      ).then(tx => {
+        console.log(
+          `${chalk.green('AK47 crafting recipie created')}`
+        )
+      })
+    })
+  }, 5000)
+
+  setTimeout(() => {
+    getInstance('LootSafe').then(instance => {
+      instance.newDeconstructionRecipie(
+        itemAddresses['ak47'],
+        [
+          itemAddresses['ump45']
+        ],
+        [
+          2
+        ],
+        {gas: 3000000, from: ethereum.account}
+      ).then(tx => {
+        console.log(
+          `${chalk.green('AK47 deconstruction recipie created')}`
         )
       })
     })

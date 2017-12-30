@@ -1,19 +1,7 @@
 const { getInstance, saveEvent } = require('../modules')
 const chalk = require('chalk')
 
-const events = [
-  'ItemCrafted',
-  'ItemDeconstructed',
-  'LootBoxOpened',
-  'CostUpdated',
-  'LootBoxItemAdded',
-  'ItemCreated',
-  'ItemDelisted',
-  'ItemSpawned',
-  'ItemDespawned',
-  'TokenIssued',
-  'TradeEvent'
-]
+const events = require('./eventlist')
 
 getInstance('LootSafe').then(instance => {
   events.map(eventName => {

@@ -7,9 +7,9 @@
     "init": "cp config.example.js config.js",
     "full": "npm run deploy && npm start",
     "start": "node api",
-    "deploy": "cd contracts && truffle compile && truffle migrate",
+    "deploy": "cd contracts && ../node_modules/truffle/build/cli.bundled.js compile && ../node_modules/truffle/build/cli.bundled.js migrate",
     "testrpc": "ganache-cli -l 0x134250805",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "./node_modules/mocha/bin/mocha --recursive test",
     "populate": "node ./debug/populate"
   },
   "repository": {
@@ -50,6 +50,7 @@
     "eslint-plugin-node": "^5.1.1",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
+    "mocha": "^4.0.1",
     "standard": "^10.0.3"
   }
 }
