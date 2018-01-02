@@ -21,6 +21,7 @@ module.exports = {
   addItem: require('./LootBox/addItem'),
   getChances: require('./LootBox/getChances'),
   getLootBoxItems: require('./LootBox/getLootBoxItems'),
+  getLootBoxCost: require('./LootBox/getLootBoxCost'),
   updateChance: require('./LootBox/updateChance'),
   updateLootBoxCost: require('./LootBox/updateLootBoxCost'),
   // Token

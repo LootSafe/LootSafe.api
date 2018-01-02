@@ -46,6 +46,7 @@ const {
   getLootBoxItems,
   updateChance,
   updateLootBoxCost,
+  getLootBoxCost,
   // Token
   balanceOf,
   getVaultBalance,
@@ -95,6 +96,7 @@ app.use(_.get(`${prefix}/v${version}/item/ledger`, ledger))
 // ----- LootBox -----
 // *******************
 app.use(_.get(`${prefix}/v${version}/lootbox/chances`, getChances))
+app.use(_.get(`${prefix}/v${version}/lootbox/cost`, getLootBoxCost))
 app.use(_.get(`${prefix}/v${version}/lootbox/items/:rarity`, getLootBoxItems))
 
 // *******************
