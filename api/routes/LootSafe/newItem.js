@@ -18,7 +18,8 @@ module.exports = async ctx => {
   const totalSupply = req.totalSupply
   const skin = req.skin || 'default'
   const metadata = req.metadata || 'no_metadata'
-  
+  const symbol = req.symbol || 'LSIC'
+
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
     if (name.length > 8) {
@@ -32,9 +33,10 @@ module.exports = async ctx => {
         id,
         totalSupply,
         skin,
-        metadata
+        metadata,
+        symbol
       )
-  
+
       ctx.body = newItemResponse
     }
   } else {

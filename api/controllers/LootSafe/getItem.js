@@ -11,6 +11,7 @@ module.exports = async (item, address) => {
     const itemInstance = await getInstance('Item', itemAddress)
 
     const id = await itemInstance.id.call()
+    const name = await itemInstance.name.call()
     const skin = await itemInstance.skin.call()
     const metadata = await itemInstance.metadata.call()
     const created = await itemInstance.created.call()
@@ -23,6 +24,7 @@ module.exports = async (item, address) => {
     return {
       address: itemAddress,
       id,
+      name,
       skin,
       metadata,
       created,

@@ -11,6 +11,36 @@ const items = [
     rarity: 'rare'
   },
   {
+    name: 'Grip',
+    id: 'grip',
+    supply: 120000,
+    rarity: 'rare'
+  },
+  {
+    name: '4x Scope',
+    id: '4scope',
+    supply: 120000,
+    rarity: 'rare'
+  },
+  {
+    name: '8x Scope',
+    id: '8scope',
+    supply: 120000,
+    rarity: 'rare'
+  },
+  {
+    name: 'Ext Mag',
+    id: 'extmag',
+    supply: 120000,
+    rarity: 'rare'
+  },
+  {
+    name: 'Supressor',
+    id: 'supressor',
+    supply: 120000,
+    rarity: 'rare'
+  },
+  {
     name: 'UMP-45',
     id: 'ump45',
     supply: 120000,
@@ -57,6 +87,7 @@ getInstance('LootSafe').then(instance => {
       item.supply,
       '',
       '',
+      'LSIC',
       {gas: 3000000, from: ethereum.account}
     ).then(tx => {
       itemAddresses[item.id] = tx.logs[0].args.itemAddress
