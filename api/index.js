@@ -1,3 +1,39 @@
+
+/*start: setting up global config files*/
+process.argv.forEach(function (val, index, array) {
+  if( (val.indexOf('=') > 0) && (val.split('=')[0] === 'env')){
+    switch(val.split('=')[1]) {
+      case 'local':
+        global.config = require('../config.local.js')
+      case 'ropsten':
+        global.config = require('../config.ropsten.js')
+      case 'prod':
+        console.log('no prod file specified')
+        // TODO: add prod file
+    }
+  }
+  else {
+    // default to local, unless environment is specified in the npm run full statement
+    global.config = require('../config.local.js')
+  }
+});
+
+const Web3 = require('web3')
+
+const provider = new Web3.providers.HttpProvider(config.ethereum.provider)
+const web3 = new Web3(provider)
+// We need to load the web3 account outside of the config json object,
+// but make it available throughout the api
+global.config.ethereum.account = web3.eth.accounts[0]
+/*end: setting up global config*/
+
+const port = config.port
+const debug = config.debug
+const version = config.version
+const db = config.db
+const cacheInterval = config.cacheInterval
+const prefix = config.prefix
+
 const chalk = require('chalk')
 const ngrok = require('ngrok')
 const pkg = require('../package.json')
@@ -10,15 +46,6 @@ const mongoose = require('mongoose')
 const cors = require('koa-cors')
 
 const cacheItems = require('./subroutines/cacheItems')
-
-const {
-  port,
-  version,
-  debug,
-  db,
-  cacheInterval,
-  prefix
-} = require('../config')
 
 const {
   // Core

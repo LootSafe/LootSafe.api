@@ -1,9 +1,5 @@
 const { getInstance } = require('../../modules')
 
-const {
-  ethereum
-} = require('../../../config')
-
 /**
  * Give an item to a player
  * @constructor
@@ -15,7 +11,7 @@ module.exports = (itemAddress, to = '0x0') => {
     return instance.spawnItem(
       itemAddress,
       to,
-      {gas: 3000000, from: ethereum.account}
+      {gas: 3000000, from: config.ethereum.account}
     )
   })
 }

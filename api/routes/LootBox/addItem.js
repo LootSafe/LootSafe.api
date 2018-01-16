@@ -1,5 +1,4 @@
 const { addItem } = require('../../controllers')
-const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
 const { addressExists } = require('../../modules')
 /**

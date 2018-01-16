@@ -1,9 +1,5 @@
 const fetch = require('node-fetch')
 
-const {
-  ethereum
-} = require('../config')
-
 /* global describe, it */
 describe('Crafter', () => {
   describe('Get craftables', () => {

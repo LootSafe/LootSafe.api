@@ -1,9 +1,5 @@
 const { getInstance } = require('../../modules')
 
-const {
-  ethereum
-} = require('../../../config')
-
 /**
  * Give tokens to address
  * @constructor
@@ -15,7 +11,7 @@ module.exports = (to = '0x0', amount = 0) => {
     instance.issueTokens(
       to,
       amount,
-      {gas: 3000000, from: ethereum.account}
+      {gas: 3000000, from: config.ethereum.account}
     )
   })
 }

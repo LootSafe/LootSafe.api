@@ -1,10 +1,6 @@
 const Web3 = require('web3')
-const {
-  ethereum,
-  addresses
-} = require('../../config')
 
-const provider = new Web3.providers.HttpProvider(ethereum.provider)
+const provider = new Web3.providers.HttpProvider(config.ethereum.provider)
 const web3 = new Web3(provider)
 
 const {
@@ -14,7 +10,7 @@ const {
   license
 } = require('../../package.json')
 
-const contracts = (ethereum.testnet) ? require('../../contracts/contracts.json') : addresses
+const contracts = (config.ethereum.testnet) ? require('../../contracts/contracts.json') : config.addresses
 
 const uptime = Date.now()
 
@@ -27,7 +23,7 @@ module.exports = (ctx) => {
     author,
     license,
     'uptime(ms)': Date.now() - uptime,
-    ethereum,
+    ethereum: config.ethereum,
     contracts
   }
 }

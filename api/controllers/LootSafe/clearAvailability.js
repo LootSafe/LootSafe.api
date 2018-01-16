@@ -1,9 +1,5 @@
 const { getInstance } = require('../../modules')
 
-const {
-  ethereum
-} = require('../../../config')
-
 /**
  * Clear future distrobution of an item
  * @constructor
@@ -13,7 +9,7 @@ module.exports = (itemAddress) => {
   return getInstance('LootSafe').then(instance => {
     return instance.clearAvailability(
       itemAddress,
-      {gas: 3000000, from: ethereum.account}
+      {gas: 3000000, from: config.ethereum.account}
     )
   })
 }

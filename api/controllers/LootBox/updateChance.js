@@ -1,9 +1,5 @@
 const { getInstance } = require('../../modules')
 
-const {
-  ethereum
-} = require('../../../config')
-
 /**
  * Add an item to the lootbox loot table
  * @constructor
@@ -17,7 +13,7 @@ module.exports = (epic = 1, rare = 3, uncommon = 20) => {
       epic,
       rare,
       uncommon,
-      {gas: 3000000, from: ethereum.account}
+      {gas: 3000000, from: config.ethereum.account}
     )
   })
 }

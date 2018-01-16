@@ -1,15 +1,10 @@
 const Web3 = require('web3')
 const contract = require('truffle-contract')
 
-const {
-  ethereum,
-  addresses
-} = require('../../../config')
-
-const provider = new Web3.providers.HttpProvider(ethereum.provider)
+const provider = new Web3.providers.HttpProvider(config.ethereum.provider)
 const web3 = new Web3(provider)
 
-const contracts = (ethereum.testnet) ? require('../../../contracts/contracts.json') : addresses
+const contracts = (config.ethereum.testnet) ? require('../../../contracts/contracts.json') : config.addresses
 
 const statelessCall = function (contractName, func, args) {
   const artifacts = require(`../../../contracts/build/contracts/${contractName}.json`)

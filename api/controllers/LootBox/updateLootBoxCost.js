@@ -1,9 +1,5 @@
 const { getInstance } = require('../../modules')
 
-const {
-  ethereum
-} = require('../../../config')
-
 /**
  * Open a lootbox cost
  * @constructor
@@ -13,7 +9,7 @@ module.exports = (cost = 1) => {
   return getInstance('LootSafe').then(instance => {
     return instance.updateLootBoxCost(
       cost,
-      {gas: 3000000, from: ethereum.account}
+      {gas: 3000000, from: config.ethereum.account}
     )
   })
 }

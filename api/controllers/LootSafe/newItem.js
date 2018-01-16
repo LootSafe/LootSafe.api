@@ -1,9 +1,5 @@
 const { getInstance } = require('../../modules')
 
-const {
-  ethereum
-} = require('../../../config')
-
 /**
  * Creates a new item.
  * @constructor
@@ -21,7 +17,7 @@ module.exports = (name, id, supply, skin, metadata, symbol = 'LSIC') => {
       skin,
       metadata,
       symbol,
-      {gas: 3000000, from: ethereum.account})
+      {gas: 3000000, from: config.ethereum.account})
     getInstance('LootSafe').then(instance => {
       instance.createItem(
         name,
@@ -30,7 +26,7 @@ module.exports = (name, id, supply, skin, metadata, symbol = 'LSIC') => {
         skin,
         metadata,
         symbol,
-        {gas: 3000000, from: ethereum.account}
+        {gas: 3000000, from: config.ethereum.account}
       ).then(tx => {
         resolve({
           status: 200,

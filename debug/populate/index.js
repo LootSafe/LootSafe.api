@@ -1,3 +1,32 @@
+/*start: setting up global config files*/
+process.argv.forEach(function (val, index, array) {
+  if( (val.indexOf('=') > 0) && (val.split('=')[0] === 'env')){
+    switch(val.split('=')[1]) {
+      case 'local':
+        global.config = require('../../config.local.js')
+      case 'ropsten':
+        global.config = require('../../config.ropsten.js')
+      case 'prod':
+        console.log('no prod file specified')
+        // TODO: add prod file
+    }
+  }
+  else {
+    // default to local, unless environment is specified in the npm run full statement
+    global.config = require('../../config.local.js')
+  }
+});
+
+const Web3 = require('web3')
+
+const provider = new Web3.providers.HttpProvider(config.ethereum.provider)
+const web3 = new Web3(provider)
+// We need to load the web3 account outside of the config json object,
+// but make it available throughout the api
+global.config.ethereum.account = web3.eth.accounts[0]
+
+
+
 const { getInstance } = require('../../api/modules')
 const chalk = require('chalk')
 
@@ -72,10 +101,6 @@ const items = [
   }
 ]
 
-const {
-  ethereum
-} = require('../../config')
-
 console.log(
   chalk.green('Adding items')
 )
@@ -88,7 +113,7 @@ getInstance('LootSafe').then(instance => {
       '',
       '',
       'LSIC',
-      {gas: 3000000, from: ethereum.account}
+      {gas: 3000000, from: config.ethereum.account}
     ).then(tx => {
       itemAddresses[item.id] = tx.logs[0].args.itemAddress
       console.log(
@@ -107,7 +132,7 @@ setTimeout(() => {
       instance.addItem(
         itemAddresses[item.id],
         item.rarity,
-        {gas: 3000000, from: ethereum.account}
+        {gas: 3000000, from: config.ethereum.account}
       ).then(tx => {
         console.log(
           `${chalk.green(item.name + ' added to lootbox ')} ${chalk.blue(item.rarity)}`
@@ -120,11 +145,11 @@ setTimeout(() => {
     items.map(item => {
       instance.spawnItem(
         itemAddresses[item.id],
-        ethereum.account,
-        {gas: 3000000, from: ethereum.account}
+        config.ethereum.account,
+        {gas: 3000000, from: config.ethereum.account}
       ).then(tx => {
         console.log(
-          `${chalk.green(item.name + ' given to')} ${chalk.blue(ethereum.account)}`
+          `${chalk.green(item.name + ' given to')} ${chalk.blue(config.ethereum.account)}`
         )
       })
     })
@@ -137,10 +162,10 @@ setTimeout(() => {
         itemAddresses['ump45'],
         1,
         2,
-        {gas: 3000000, from: ethereum.account}
+        {gas: 3000000, from: config.ethereum.account}
       ).then(tx => {
         console.log(
-          `${chalk.green('Trade created')} ${chalk.blue(ethereum.account)}`
+          `${chalk.green('Trade created')} ${chalk.blue(config.ethereum.account)}`
         )
       })
     })
@@ -156,7 +181,7 @@ setTimeout(() => {
         [
           2
         ],
-        {gas: 3000000, from: ethereum.account}
+        {gas: 3000000, from: config.ethereum.account}
       ).then(tx => {
         console.log(
           `${chalk.green('AK47 crafting recipie created')}`
@@ -175,7 +200,7 @@ setTimeout(() => {
         [
           2
         ],
-        {gas: 3000000, from: ethereum.account}
+        {gas: 3000000, from: config.ethereum.account}
       ).then(tx => {
         console.log(
           `${chalk.green('AK47 deconstruction recipie created')}`

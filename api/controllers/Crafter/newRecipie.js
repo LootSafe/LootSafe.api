@@ -1,9 +1,5 @@
 const { getInstance } = require('../../modules')
 
-const {
-  ethereum
-} = require('../../../config')
-
 /**
  * Add a new crafting recepie
  * @constructor
@@ -17,7 +13,7 @@ module.exports = (result = '0x0', materials = [], counts = []) => {
       result,
       materials,
       counts,
-      {gas: 3000000, from: ethereum.account}
+      {gas: 3000000, from: config.ethereum.account}
     )
   })
 }

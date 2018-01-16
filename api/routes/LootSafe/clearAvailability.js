@@ -1,7 +1,6 @@
 const { clearAvailability, getItems } = require('../../controllers')
 const Web3 = require('web3')
 const web3 = new Web3()
-const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
 
 /**
