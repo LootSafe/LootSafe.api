@@ -17,7 +17,8 @@ const {
   debug,
   db,
   cacheInterval,
-  prefix
+  prefix,
+  ethereum
 } = require('../config')
 
 const {
@@ -107,14 +108,6 @@ app.use(_.get(`${prefix}/v${version}/recipie/deconstruction/get/:item`, getDecon
 app.use(_.get(`${prefix}/v${version}/craftables`, getCraftables))
 app.use(_.get(`${prefix}/v${version}/deconstructables`, getDeconstructables))
 
-// *******************
-// ----- Trade -------
-// *******************
-app.use(_.get(`${prefix}/v${version}/trade/get/:merchant/:tradeid`, getTrade))
-app.use(_.get(`${prefix}/v${version}/trades/get/:merchant`, getTrades))
-app.use(_.get(`${prefix}/v${version}/trade/cost`, getTradeCost))
-app.use(_.get(`${prefix}/v${version}/token/balance/:address`, balanceOf))
-app.use(_.get(`${prefix}/v${version}/token/vault/balance`, getVaultBalance))
 
 // *******************
 // ---- Balance ------
@@ -149,15 +142,35 @@ app.use(_.get(`${prefix}/v${version}/lootbox/cost/:cost`, updateLootBoxCost))
 
 // Authenticated
 // *******************
-// ----- Trade -------
-// *******************
-app.use(_.get(`${prefix}/v${version}/trade/cost/:cost`, updateTradeCost))
-
-// Authenticated
-// *******************
 // ----- Events ------
 // *******************
 app.use(_.get(`${prefix}/v${version}/events`, fetchEvents))
+
+// *****************************
+// ----- Extension Loader ------
+// *****************************
+
+const { lstatSync, readdirSync } = require('fs')
+const { join } = require('path')
+
+const isDirectory = source => lstatSync(source).isDirectory()
+const getDirectories = source =>
+  readdirSync(source).map(name => join(source, name)).filter(isDirectory)
+
+const extensions = getDirectories('./api/extensions')
+
+extensions.map(ext => {
+  const manifest = require(`../${ext}/extension.ls.json`)
+  const apiInterface = require(`../${ext}/${manifest.api_extension}`)
+  const routePrefix = apiInterface.endpoint
+  apiInterface.routes.map(route => {
+    app.use(_.get(`${prefix}/v${version}/${routePrefix}/${route.endpoint}`, async function (ctx, test) {
+      const response = await route.controller(ethereum.provider, ...arguments)
+      ctx.body = response
+    }))
+  })
+  console.log(`Loaded module ${ext}`)
+})
 
 app.listen(port)
 

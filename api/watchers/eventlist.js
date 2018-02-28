@@ -8,6 +8,5 @@ module.exports = [
   'ItemDelisted',
   'ItemSpawned',
   'ItemDespawned',
-  'TokenIssued',
-  'TradeEvent'
+  'TokenIssued'
 ]
