@@ -9,15 +9,13 @@ const bodyParser = require('koa-bodyparser')
 const mongoose = require('mongoose')
 const cors = require('koa-cors')
 
-const cacheItems = require('./subroutines/cacheItems')
-
 const {
   port,
   version,
   debug,
   db,
-  cacheInterval,
-  prefix
+  prefix,
+  ethereum
 } = require('../config')
 
 const {
@@ -33,13 +31,13 @@ const {
   getItemByAddress,
   ledger,
   // Crafter
-  getRecipie,
-  getDeconstructionRecipie,
-  newRecipie,
-  newDeconstructionRecipie,
+  getRecipe,
+  getDeconstructionRecipe,
+  newRecipe,
+  newDeconstructionRecipe,
   getCraftables,
   getDeconstructables,
-  removeRecipie,
+  removeRecipe,
   // LootBox
   addItem,
   getChances,
@@ -49,16 +47,9 @@ const {
   getLootBoxCost,
   // Token
   balanceOf,
-  getVaultBalance,
-  // Trade
-  getTrade,
-  getTrades,
-  getTradeCost,
-  updateTradeCost,
   // Events
   fetchEvents,
   // Balance
-  tokenBalance,
   itemBalance,
   allBalances
 } = require('./routes')
@@ -102,19 +93,10 @@ app.use(_.get(`${prefix}/v${version}/lootbox/items/:rarity`, getLootBoxItems))
 // *******************
 // ---- Crafting -----
 // *******************
-app.use(_.get(`${prefix}/v${version}/recipie/get/:item`, getRecipie))
-app.use(_.get(`${prefix}/v${version}/recipie/deconstruction/get/:item`, getDeconstructionRecipie))
+app.use(_.get(`${prefix}/v${version}/recipe/get/:item`, getRecipe))
+app.use(_.get(`${prefix}/v${version}/recipe/deconstruction/get/:item`, getDeconstructionRecipe))
 app.use(_.get(`${prefix}/v${version}/craftables`, getCraftables))
 app.use(_.get(`${prefix}/v${version}/deconstructables`, getDeconstructables))
-
-// *******************
-// ----- Trade -------
-// *******************
-app.use(_.get(`${prefix}/v${version}/trade/get/:merchant/:tradeid`, getTrade))
-app.use(_.get(`${prefix}/v${version}/trades/get/:merchant`, getTrades))
-app.use(_.get(`${prefix}/v${version}/trade/cost`, getTradeCost))
-app.use(_.get(`${prefix}/v${version}/token/balance/:address`, balanceOf))
-app.use(_.get(`${prefix}/v${version}/token/vault/balance`, getVaultBalance))
 
 // *******************
 // ---- Balance ------
@@ -135,9 +117,9 @@ app.use(_.post(`${prefix}/v${version}/item/clearAvailability`, clearAvailability
 // *******************
 // ---- Crafting -----
 // *******************
-app.use(_.post(`${prefix}/v${version}/recipie/new`, newRecipie))
-app.use(_.post(`${prefix}/v${version}/recipie/remove`, removeRecipie))
-app.use(_.post(`${prefix}/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
+app.use(_.post(`${prefix}/v${version}/recipe/new`, newRecipe))
+app.use(_.post(`${prefix}/v${version}/recipe/remove`, removeRecipe))
+app.use(_.post(`${prefix}/v${version}/recipe/deconstruction/new`, newDeconstructionRecipe))
 
 // Authenticated
 // *******************
@@ -149,15 +131,35 @@ app.use(_.get(`${prefix}/v${version}/lootbox/cost/:cost`, updateLootBoxCost))
 
 // Authenticated
 // *******************
-// ----- Trade -------
-// *******************
-app.use(_.get(`${prefix}/v${version}/trade/cost/:cost`, updateTradeCost))
-
-// Authenticated
-// *******************
 // ----- Events ------
 // *******************
 app.use(_.get(`${prefix}/v${version}/events`, fetchEvents))
+
+// *****************************
+// ----- Extension Loader ------
+// *****************************
+
+const { lstatSync, readdirSync } = require('fs')
+const { join } = require('path')
+
+const isDirectory = source => lstatSync(source).isDirectory()
+const getDirectories = source =>
+  readdirSync(source).map(name => join(source, name)).filter(isDirectory)
+
+const extensions = getDirectories('./api/extensions')
+
+extensions.map(ext => {
+  const manifest = require(`../${ext}/extension.ls.json`)
+  const apiInterface = require(`../${ext}/${manifest.api_extension}`)
+  const routePrefix = apiInterface.endpoint
+  apiInterface.routes.map(route => {
+    app.use(_.get(`${prefix}/v${version}/${routePrefix}/${route.endpoint}`, async function (ctx, test) {
+      const response = await route.controller(ethereum.provider, ...arguments)
+      ctx.body = response
+    }))
+  })
+  console.log(`Loaded module ${ext}`)
+})
 
 app.listen(port)
 

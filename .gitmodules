@@ -1,3 +1,6 @@
 [submodule "contracts"]
 	path = contracts
 	url = git@github.com:LootSafe/LootSafe.contracts.git
+[submodule "api/extensions/LootSafe.Market.module"]
+	path = api/extensions/LootSafe.Market.module
+	url = git@github.com:LootSafe/LootSafe.Market.module.git

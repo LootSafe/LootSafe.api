@@ -7,7 +7,7 @@ const {
 /* global describe, it */
 describe('Crafter', () => {
   describe('Get craftables', () => {
-    it(`should return at least one recipie`, done => {
+    it(`should return at least one recipe`, done => {
       fetch(`http://localhost:1337/v1/craftables`)
         .then(res => res.json())
         .then(json => {
@@ -20,7 +20,7 @@ describe('Crafter', () => {
     })
   })
   describe('Get Deconstructables', () => {
-    it(`should return at least one deconstruction recipie`, done => {
+    it(`should return at least one deconstruction recipe`, done => {
       fetch(`http://localhost:1337/v1/deconstructables`)
         .then(res => res.json())
         .then(json => {
@@ -32,12 +32,12 @@ describe('Crafter', () => {
         })
     })
   })
-  describe('Crafting Recipie', () => {
-    it(`should return crafting recipie`, done => {
+  describe('Crafting Recipe', () => {
+    it(`should return crafting recipe`, done => {
       fetch(`http://localhost:1337/v1/craftables`)
         .then(res => res.json())
         .then(json => {
-          fetch(`http://localhost:1337/v1/recipie/get/${json.data[0]}`)
+          fetch(`http://localhost:1337/v1/recipe/get/${json.data[0]}`)
             .then(res => res.json())
             .then(json => {
               if (json.data.length) {
@@ -49,12 +49,12 @@ describe('Crafter', () => {
         })
     })
   })
-  describe('Deconstruction Recipie', () => {
-    it(`should return deconstruction recipie`, done => {
+  describe('Deconstruction Recipe', () => {
+    it(`should return deconstruction recipe`, done => {
       fetch(`http://localhost:1337/v1/deconstructables`)
         .then(res => res.json())
         .then(json => {
-          fetch(`http://localhost:1337/v1/recipie/deconstruction/get/${json.data[0]}`)
+          fetch(`http://localhost:1337/v1/recipe/deconstruction/get/${json.data[0]}`)
             .then(res => res.json())
             .then(json => {
               if (json.data.length) {
@@ -66,8 +66,8 @@ describe('Crafter', () => {
         })
     })
   })
-  describe('New Crafting Recipie', () => {
-    it(`should create crafting recipie`, done => {
+  describe('New Crafting Recipe', () => {
+    it(`should create crafting recipe`, done => {
       fetch('http://localhost:1337/v1/item/ledger')
         .then(res => res.json())
         .then(json => {
@@ -78,7 +78,7 @@ describe('Crafter', () => {
           const quantites = [
             1
           ]
-          fetch(`http://localhost:1337/v1/recipie/new`, {
+          fetch(`http://localhost:1337/v1/recipe/new`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -101,8 +101,8 @@ describe('Crafter', () => {
         })
     })
   })
-  describe('New Deconstruction Recipie', () => {
-    it(`should create deconstruction recipie`, done => {
+  describe('New Deconstruction Recipe', () => {
+    it(`should create deconstruction recipe`, done => {
       fetch('http://localhost:1337/v1/item/ledger')
         .then(res => res.json())
         .then(json => {
@@ -113,7 +113,7 @@ describe('Crafter', () => {
           const quantites = [
             1
           ]
-          fetch(`http://localhost:1337/v1/recipie/deconstruction/new`, {
+          fetch(`http://localhost:1337/v1/recipe/deconstruction/new`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -136,14 +136,14 @@ describe('Crafter', () => {
         })
     })
   })
-  describe('Remove Crafting Recipie', () => {
-    it(`should remove crafting recipie`, done => {
+  describe('Remove Crafting Recipe', () => {
+    it(`should remove crafting recipe`, done => {
       fetch('http://localhost:1337/v1/item/ledger')
       .then(res => res.json())
       .then(json => {
         const itemToCraft = json.data[0].address
 
-        fetch(`http://localhost:1337/v1/recipie/remove`, {
+        fetch(`http://localhost:1337/v1/recipe/remove`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -164,8 +164,8 @@ describe('Crafter', () => {
       })
     })
   })
-  describe('Remove Deconstruction Recipie', () => {
-    it(`should remove deconstruction recipie`, done => {
+  describe('Remove Deconstruction Recipe', () => {
+    it(`should remove deconstruction recipe`, done => {
       done()
     })
   })

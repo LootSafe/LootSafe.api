@@ -11,12 +11,6 @@ const items = [
     rarity: 'rare'
   },
   {
-    name: 'Grip',
-    id: 'grip',
-    supply: 120000,
-    rarity: 'rare'
-  },
-  {
     name: '4x Scope',
     id: '4scope',
     supply: 120000,
@@ -31,12 +25,6 @@ const items = [
   {
     name: 'Ext Mag',
     id: 'extmag',
-    supply: 120000,
-    rarity: 'rare'
-  },
-  {
-    name: 'Supressor',
-    id: 'supressor',
     supply: 120000,
     rarity: 'rare'
   },
@@ -132,23 +120,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     getInstance('LootSafe').then(instance => {
-      instance.newTrade(
-        itemAddresses['ak47'],
-        itemAddresses['ump45'],
-        1,
-        2,
-        {gas: 3000000, from: ethereum.account}
-      ).then(tx => {
-        console.log(
-          `${chalk.green('Trade created')} ${chalk.blue(ethereum.account)}`
-        )
-      })
-    })
-  }, 5000)
-
-  setTimeout(() => {
-    getInstance('LootSafe').then(instance => {
-      instance.newRecipie(
+      instance.newRecipe(
         itemAddresses['ak47'],
         [
           itemAddresses['ump45']
@@ -159,7 +131,7 @@ setTimeout(() => {
         {gas: 3000000, from: ethereum.account}
       ).then(tx => {
         console.log(
-          `${chalk.green('AK47 crafting recipie created')}`
+          `${chalk.green('AK47 crafting recipe created')}`
         )
       })
     })
@@ -167,7 +139,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     getInstance('LootSafe').then(instance => {
-      instance.newDeconstructionRecipie(
+      instance.newDeconstructionRecipe(
         itemAddresses['ak47'],
         [
           itemAddresses['ump45']
@@ -178,7 +150,7 @@ setTimeout(() => {
         {gas: 3000000, from: ethereum.account}
       ).then(tx => {
         console.log(
-          `${chalk.green('AK47 deconstruction recipie created')}`
+          `${chalk.green('AK47 deconstruction recipe created')}`
         )
       })
     })

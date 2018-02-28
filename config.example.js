@@ -8,7 +8,7 @@ module.exports = {
   version: 1,
   debug: true,
   cacheInterval: 100000,
-  prefix: 'raptorstrike/',
+  prefix: '',
   db: 'LootSafe',
   ethereum: {
     account: web3.eth.accounts[0],
@@ -30,7 +30,7 @@ module.exports = {
     key: 'sha1$7f408b79$1$02fdd7ee5f25861e9ed1af83bf06124c52b3aec6'
   },
   yubico: {
-    enabled: true,
+    enabled: false,
     clientId: 35374,
     secret: 'jAOPLIZfzZImv106iC1lDscTJxQ='
   }

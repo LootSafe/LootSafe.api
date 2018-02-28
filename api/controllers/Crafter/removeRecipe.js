@@ -5,14 +5,14 @@ const {
 } = require('../../../config')
 
 /**
- * Open a lootbox cost
+ * Remove a crafting recepe
  * @constructor
- * @param {number} cost - The cost to open a trade
+ * @param {string} item - Resulting item
  */
-module.exports = (cost = 1) => {
+module.exports = (item = '0x0') => {
   return getInstance('LootSafe').then(instance => {
-    return instance.updateTradeCost(
-      cost,
+    return instance.removeRecipe(
+      item,
       {gas: 3000000, from: ethereum.account}
     )
   })

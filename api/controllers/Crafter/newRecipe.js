@@ -13,7 +13,7 @@ const {
  */
 module.exports = (result = '0x0', materials = [], counts = []) => {
   return getInstance('LootSafe').then(instance => {
-    return instance.newRecipie(
+    return instance.newRecipe(
       result,
       materials,
       counts,

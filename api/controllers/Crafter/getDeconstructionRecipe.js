@@ -1,11 +1,11 @@
 const { getInstance } = require('../../modules')
 
 /**
- * Get the available items to craft
+ * Get the available items to deconstruct
  * @route
  */
 module.exports = (item) => {
   return getInstance('LootSafe').then(async instance => {
-    return instance.getRecipie.call(item)
+    return instance.getDeconstructionRecipe.call(item)
   })
 }

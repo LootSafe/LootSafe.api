@@ -5,7 +5,7 @@ const { getItem } = require('../../controllers')
  * @route
  */
 module.exports = async (ctx, item) => {
-  const itemResponse = await getItem(item)
+  const itemResponse = await getItem(false, item)
 
   ctx.body = {
     status: 200,

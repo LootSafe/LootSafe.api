@@ -1,11 +1,11 @@
 const { getInstance } = require('../../modules')
 
 /**
- * Get the current fee to trade
+ * Get the available items to craft
  * @route
  */
-module.exports = () => {
+module.exports = (item) => {
   return getInstance('LootSafe').then(async instance => {
-    return instance.tradeCost.call()
+    return instance.getRecipe.call(item)
   })
 }

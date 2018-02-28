@@ -29,7 +29,6 @@ Get metadata about the api
             "StandardToken": "0x345ca3e014aaf5dca488057592ee47305d9b3e10",
             "Item": "0xf25186b5081ff5ce73482ad761db0eb0d25abfbf",
             "Meta": "0x8f0483125fcb9aaaefa9209d8e9d7b9c8b9fb90f",
-            "Trade": "0x9fbda871d559710256a2502a2517b794b482db40",
             "LootBox": "0x2c2b9c9a4a25e24b174f26114e8926a9f2128fe4",
             "BlockBench": "0x30753e4a8aad7f8597332e813735def5dd395028",
             "CoreToken": "0xfb88de099e13c3ed21f80a7a1e49f8caecf10df6"
@@ -780,78 +779,4 @@ Get vault balance
             "status": 200,
             "message": "Vault balance fetched",
             "data": 1
-        }
-## Group Trade
-
-## Get trades by merchant [/v1/trade/0x0000000000...]
-
-Get trades by merchant address
-
-### Get Trades [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "status": 200,
-            "message": "Trades fetched",
-            "data": [
-                "0x00000f0000000000"
-            ]
-        }
-        
-## Get trade cost [/v1/trade/cost]
-
-Get trade cost (in tokens)
-
-### Get Cost [GET]
-
-+ Response 200 (application/json)
-
-        {
-            "status": 200,
-            "message": "Trade cost fetched",
-            "data": "0"
-        }
-        
-## Update Trade Cost [/v1/trade/cost/55]
-
-Update the cost in tokens to trade
-
-
-### Update Trade Cost [GET]
-
-+ Request (application/json)
-
-    + Headers
-        
-            key: pWpzWuxoKUKAmlHc0wPi7lFS38FTth
-            otp: ccccccglcrcdfbvrelclvcgjbbkkjtkhcvdbnlljlgke
- 
-+ Response 200 (application/json)
-
-        {
-            "status": 200,
-            "message": "Trade cost fetched",
-            "data": "0"
-        }
-        
-## Get trade  [/v1/trade/get/0xa9b93a905362b71572599aca64526cfafaa6a454/0x0000000005aba15d]
-
-Get trade
-
-### Get Trade [GET]
-
-+ Response 200 (application/json)
-        
-        {
-            "status": 200,
-            "message": "Trade fetched",
-            "data": [
-                "0x0000000005aba15d",
-                "0x47a13aa3e6a2beb4450c95ded06e25d9e2643ca9",
-                "0x1cb3fcf389772f9b68e1a178a2506782c160a4c3",
-                "1",
-                "2",
-                false
-            ]
         }
