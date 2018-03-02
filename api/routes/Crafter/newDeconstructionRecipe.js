@@ -1,4 +1,4 @@
-const { newDeconstructionRecipie } = require('../../controllers')
+const { newDeconstructionRecipe } = require('../../controllers')
 const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
 
@@ -19,7 +19,7 @@ module.exports = async ctx => {
 
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
-    const newRecipieResponse = await newDeconstructionRecipie(
+    const newRecipeResponse = await newDeconstructionRecipe(
       item,
       rewards,
       counts
@@ -27,8 +27,8 @@ module.exports = async ctx => {
 
     ctx.body = {
       status: 200,
-      message: 'New deconstruction recipie added',
-      data: newRecipieResponse
+      message: 'New deconstruction recipe added',
+      data: newRecipeResponse
     }
   } else {
     ctx.body = {

@@ -10,13 +10,13 @@ module.exports = {
   getItemByAddress: require('./LootSafe/getItemByAddress'),
   ledger: require('./LootSafe/ledger'),
   // Crafter
-  newRecipie: require('./Crafter/newRecipie'),
-  newDeconstructionRecipie: require('./Crafter/newDeconstructionRecipie'),
-  getRecipie: require('./Crafter/getRecipie'),
+  newRecipe: require('./Crafter/newRecipe'),
+  newDeconstructionRecipe: require('./Crafter/newDeconstructionRecipe'),
+  getRecipe: require('./Crafter/getRecipe'),
   getCraftables: require('./Crafter/getCraftables'),
   getDeconstructables: require('./Crafter/getDeconstructables'),
-  getDeconstructionRecipie: require('./Crafter/getDeconstructionRecipie'),
-  removeRecipie: require('./Crafter/removeRecipie'),
+  getDeconstructionRecipe: require('./Crafter/getDeconstructionRecipe'),
+  removeRecipe: require('./Crafter/removeRecipe'),
   // LootBox
   addItem: require('./LootBox/addItem'),
   getChances: require('./LootBox/getChances'),

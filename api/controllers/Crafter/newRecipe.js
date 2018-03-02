@@ -5,7 +5,7 @@ const {
 } = require('../../../config')
 
 /**
- * Add a new crafting recepie
+ * Add a new crafting recepe
  * @constructor
  * @param {string} result - Resulting item
  * @param {array} materials - Materials required to craft
@@ -13,7 +13,7 @@ const {
  */
 module.exports = (result = '0x0', materials = [], counts = []) => {
   return getInstance('LootSafe').then(instance => {
-    return instance.newRecipie(
+    return instance.newRecipe(
       result,
       materials,
       counts,

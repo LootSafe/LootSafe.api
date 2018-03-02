@@ -1,4 +1,4 @@
-const { newRecipie } = require('../../controllers')
+const { newRecipe } = require('../../controllers')
 const { accessControl } = require('../../../config')
 const checkAccess = require('../../middleware/accessControl')
 
@@ -16,11 +16,10 @@ module.exports = async ctx => {
   const counts = req.counts.map(i => parseInt(i))
 
   // TODO: Ensure addresses are valid, and item, and rewards, exist in the system
-  
 
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
-    const newRecipieResponse = await newRecipie(
+    const newRecipeResponse = await newRecipe(
       result,
       materials,
       counts
@@ -28,8 +27,8 @@ module.exports = async ctx => {
 
     ctx.body = {
       status: 200,
-      message: 'New recipie added',
-      data: newRecipieResponse
+      message: 'New recipe added',
+      data: newRecipeResponse
     }
   } else {
     ctx.body = {

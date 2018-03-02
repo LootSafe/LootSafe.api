@@ -120,7 +120,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     getInstance('LootSafe').then(instance => {
-      instance.newRecipie(
+      instance.newRecipe(
         itemAddresses['ak47'],
         [
           itemAddresses['ump45']
@@ -131,7 +131,7 @@ setTimeout(() => {
         {gas: 3000000, from: ethereum.account}
       ).then(tx => {
         console.log(
-          `${chalk.green('AK47 crafting recipie created')}`
+          `${chalk.green('AK47 crafting recipe created')}`
         )
       })
     })
@@ -139,7 +139,7 @@ setTimeout(() => {
 
   setTimeout(() => {
     getInstance('LootSafe').then(instance => {
-      instance.newDeconstructionRecipie(
+      instance.newDeconstructionRecipe(
         itemAddresses['ak47'],
         [
           itemAddresses['ump45']
@@ -150,7 +150,7 @@ setTimeout(() => {
         {gas: 3000000, from: ethereum.account}
       ).then(tx => {
         console.log(
-          `${chalk.green('AK47 deconstruction recipie created')}`
+          `${chalk.green('AK47 deconstruction recipe created')}`
         )
       })
     })

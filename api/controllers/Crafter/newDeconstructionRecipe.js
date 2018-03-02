@@ -13,7 +13,7 @@ const {
  */
 module.exports = (item = '0x0', rewards = [], counts = []) => {
   return getInstance('LootSafe').then(instance => {
-    return instance.newDeconstructionRecipie(
+    return instance.newDeconstructionRecipe(
       item,
       rewards,
       counts,

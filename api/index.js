@@ -34,13 +34,13 @@ const {
   getItemByAddress,
   ledger,
   // Crafter
-  getRecipie,
-  getDeconstructionRecipie,
-  newRecipie,
-  newDeconstructionRecipie,
+  getRecipe,
+  getDeconstructionRecipe,
+  newRecipe,
+  newDeconstructionRecipe,
   getCraftables,
   getDeconstructables,
-  removeRecipie,
+  removeRecipe,
   // LootBox
   addItem,
   getChances,
@@ -50,16 +50,9 @@ const {
   getLootBoxCost,
   // Token
   balanceOf,
-  getVaultBalance,
-  // Trade
-  getTrade,
-  getTrades,
-  getTradeCost,
-  updateTradeCost,
   // Events
   fetchEvents,
   // Balance
-  tokenBalance,
   itemBalance,
   allBalances
 } = require('./routes')
@@ -103,11 +96,10 @@ app.use(_.get(`${prefix}/v${version}/lootbox/items/:rarity`, getLootBoxItems))
 // *******************
 // ---- Crafting -----
 // *******************
-app.use(_.get(`${prefix}/v${version}/recipie/get/:item`, getRecipie))
-app.use(_.get(`${prefix}/v${version}/recipie/deconstruction/get/:item`, getDeconstructionRecipie))
+app.use(_.get(`${prefix}/v${version}/recipe/get/:item`, getRecipe))
+app.use(_.get(`${prefix}/v${version}/recipe/deconstruction/get/:item`, getDeconstructionRecipe))
 app.use(_.get(`${prefix}/v${version}/craftables`, getCraftables))
 app.use(_.get(`${prefix}/v${version}/deconstructables`, getDeconstructables))
-
 
 // *******************
 // ---- Balance ------
@@ -128,9 +120,9 @@ app.use(_.post(`${prefix}/v${version}/item/clearAvailability`, clearAvailability
 // *******************
 // ---- Crafting -----
 // *******************
-app.use(_.post(`${prefix}/v${version}/recipie/new`, newRecipie))
-app.use(_.post(`${prefix}/v${version}/recipie/remove`, removeRecipie))
-app.use(_.post(`${prefix}/v${version}/recipie/deconstruction/new`, newDeconstructionRecipie))
+app.use(_.post(`${prefix}/v${version}/recipe/new`, newRecipe))
+app.use(_.post(`${prefix}/v${version}/recipe/remove`, removeRecipe))
+app.use(_.post(`${prefix}/v${version}/recipe/deconstruction/new`, newDeconstructionRecipe))
 
 // Authenticated
 // *******************

@@ -1,4 +1,4 @@
-const { removeRecipie } = require('../../controllers')
+const { removeRecipe } = require('../../controllers')
 const checkAccess = require('../../middleware/accessControl')
 
 /**
@@ -15,14 +15,14 @@ module.exports = async ctx => {
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
 
   if (access) {
-    const removeRecipieResponse = await removeRecipie(
+    const removeRecipeResponse = await removeRecipe(
       item
     )
 
     ctx.body = {
       status: 200,
-      message: 'Recipie removed',
-      data: removeRecipieResponse
+      message: 'Recipe removed',
+      data: removeRecipeResponse
     }
   } else {
     ctx.body = {
