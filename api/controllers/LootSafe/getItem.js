@@ -7,7 +7,7 @@ const { getInstance } = require('../../modules')
  */
 module.exports = async (item, address) => {
   return getInstance('LootSafe').then(async instance => {
-    const itemAddress = await instance.getItem.call(item)
+    const itemAddress = address || await instance.getItem.call(item)
     const itemInstance = await getInstance('Item', itemAddress)
 
     const id = await itemInstance.id.call()

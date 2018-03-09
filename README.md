@@ -32,3 +32,11 @@ Populate API with test data
 ```
 npm run populate
 ```
+
+
+
+Generate hash and add to config (this will allow you to authenticate to requests)
+```
+npm run init
+npm run generate
+```

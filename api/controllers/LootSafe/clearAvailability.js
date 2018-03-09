@@ -11,7 +11,7 @@ const {
  */
 module.exports = (itemAddress) => {
   return getInstance('LootSafe').then(instance => {
-    return instance.clearAvailability(
+    return instance.ownerBurn(
       itemAddress,
       {gas: 3000000, from: ethereum.account}
     )

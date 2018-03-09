@@ -10,7 +10,8 @@
     "deploy": "cd contracts && ../node_modules/truffle/build/cli.bundled.js compile && ../node_modules/truffle/build/cli.bundled.js migrate",
     "testrpc": "ganache-cli -l 0x134250805",
     "test": "./node_modules/mocha/bin/mocha --recursive test",
-    "populate": "node ./debug/populate"
+    "populate": "node ./debug/populate",
+    "generate": "node ./api/modules/generateHash"
   },
   "repository": {
     "type": "git",
