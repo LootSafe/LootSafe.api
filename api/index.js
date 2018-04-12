@@ -161,7 +161,7 @@ extensions.map(ext => {
       ctx.body = response
     }))
   })
-  console.log(`Loaded module ${ext}`)
+  console.log(chalk.green(`Loaded module ${ext}`))
 })
 
 app.listen(port)

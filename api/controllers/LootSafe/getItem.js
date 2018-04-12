@@ -20,6 +20,7 @@ module.exports = async (item, address) => {
     const totalSupply = await itemInstance.totalSupply.call()
     const finalSupply = await itemInstance.finalSupply.call()
     const vault = await itemInstance.vault.call()
+    const ownerBalance = await itemInstance.balanceOf.call(owner)
 
     return {
       address: itemAddress,
@@ -32,7 +33,13 @@ module.exports = async (item, address) => {
       symbol,
       totalSupply,
       finalSupply,
-      vault
+      vault,
+      ownerBalance
+    }
+  }).catch(e => {
+    return {
+      status: 404,
+      message: "I couldn't find that item! Please check the address."
     }
   })
 }

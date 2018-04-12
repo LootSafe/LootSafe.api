@@ -15,6 +15,11 @@ module.exports = (itemAddress) => {
       itemAddress,
       {gas: 3000000, from: ethereum.account}
     )
+  }).catch(e => {
+    return {
+      status: 404,
+      message: "I couldn't find that item, please check the address provided is the address of a deployed item."
+    }
   })
 }
 
