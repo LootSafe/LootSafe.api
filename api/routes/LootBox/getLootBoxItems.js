@@ -7,7 +7,8 @@ const { getLootBoxItems } = require('../../controllers')
  */
 module.exports = async (ctx, rarity) => {
   const items = await getLootBoxItems(rarity)
-
+  
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Items fetched',

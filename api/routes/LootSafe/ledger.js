@@ -6,7 +6,7 @@ const { ledger } = require('../../controllers')
  */
 module.exports = async (ctx) => {
   const itemResponse = await ledger()
-
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Items fetched',

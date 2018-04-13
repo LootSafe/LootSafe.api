@@ -6,7 +6,7 @@ const { balanceOf } = require('../../controllers')
  */
 module.exports = async (ctx, address) => {
   const balanceOfResponse = await balanceOf(address)
-
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Balance fetched',

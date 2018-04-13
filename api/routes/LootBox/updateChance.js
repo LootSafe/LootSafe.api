@@ -11,12 +11,14 @@ module.exports = async (ctx, epic, rare, uncommon) => {
   if (access) {
     const chanceResponse = await updateChance(epic, rare, uncommon)
     
+    ctx.status = 200
     ctx.body = {
       status: 200,
       message: 'Updated lootbox chances',
       data: chanceResponse
     }
   } else {
+    ctx.status = 401
     ctx.body = {
       status: 401,
       message: 'Unauthorized access!'

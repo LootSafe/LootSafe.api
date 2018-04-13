@@ -23,18 +23,21 @@ module.exports = async ctx => {
         rarity
       )
 
+      ctx.status = 200
       ctx.body = {
         status: 200,
         message: 'New item added to loot table.',
         data: addItemRespopnse
       }
     } else {
+      ctx.status = 404
       ctx.body = {
         status: 404,
         message: 'An item by the supplied address does not exist.'
       }
     }
   } else {
+    ctx.status = 401
     ctx.body = {
       status: 401,
       message: 'Unauthorized access!'

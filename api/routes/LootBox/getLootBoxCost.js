@@ -6,7 +6,8 @@ const { getLootBoxCost } = require('../../controllers')
  */
 module.exports = async (ctx) => {
   const cost = await getLootBoxCost()
-
+  
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'LootBox cost fetched',

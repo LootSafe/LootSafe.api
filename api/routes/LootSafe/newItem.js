@@ -23,6 +23,7 @@ module.exports = async ctx => {
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
     if (name.length > 8) {
+      ctx.status = 500
       ctx.body = {
         status: 500,
         message: 'Name exceeds length limit, please limit your name to 8 characters.'
@@ -40,6 +41,7 @@ module.exports = async ctx => {
       ctx.body = newItemResponse
     }
   } else {
+    ctx.status = 401
     ctx.body = {
       status: 401,
       message: 'Unauthorized access!'

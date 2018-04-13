@@ -20,6 +20,7 @@ const uptime = Date.now()
 
 // Returns general purpose information about the app
 module.exports = (ctx) => {
+  ctx.status = 200
   ctx.body = {
     connected: web3.isConnected() || false,
     name,

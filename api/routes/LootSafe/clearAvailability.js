@@ -22,6 +22,7 @@ module.exports = async (ctx) => {
     // TODO fix this
     //if (decoded.includes(name)) {
       const clearAvailabilityResponse = await clearAvailability(itemAddress)
+      ctx.status = 200
       ctx.body = {
         status: 200,
         message: "Cleared available supply of item",
@@ -34,6 +35,7 @@ module.exports = async (ctx) => {
       }
     }*/
   } else {
+    ctx.status = 401
     ctx.body = {
       status: 401,
       message: 'Unauthorized access!'

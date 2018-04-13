@@ -6,7 +6,7 @@ const { getItems } = require('../../controllers')
  */
 module.exports = async ctx => {
   const items = await getItems()
-
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Items fetched',

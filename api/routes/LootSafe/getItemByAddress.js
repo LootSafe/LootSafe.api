@@ -6,7 +6,7 @@ const { getItemByAddress } = require('../../controllers')
  */
 module.exports = async (ctx, address) => {
   const itemResponse = await getItemByAddress(address)
-
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Item fetched',

@@ -8,6 +8,7 @@ module.exports = async (ctx, item) => {
   // TODO: Ensure item is address and in LootSafe
   const recipe = await getRecipe(item)
 
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Recipe fetched',

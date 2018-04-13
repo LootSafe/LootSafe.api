@@ -7,6 +7,7 @@ const { getChances } = require('../../controllers')
 module.exports = async (ctx) => {
   const chances = await getChances()
 
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Chances fetched',

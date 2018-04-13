@@ -24,6 +24,7 @@ module.exports = async (ctx) => {
 
     //if (decoded.includes(name)) {
       const spawnItemResponse = await spawnItem(itemAddress, to)
+      ctx.status = 200
       ctx.body = {
         status: 200,
         message: "Spawned one item",
@@ -36,6 +37,7 @@ module.exports = async (ctx) => {
       }
     }*/
   } else {
+    ctx.status = 401
     ctx.body = {
       status: 401,
       message: 'Unauthorized access!'

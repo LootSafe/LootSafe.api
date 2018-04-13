@@ -7,6 +7,7 @@ const { getDeconstrucatbles } = require('../../controllers')
 module.exports = async (ctx) => {
   const deconstructables = await getDeconstrucatbles()
 
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Deconstructables fetched',

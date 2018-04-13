@@ -7,6 +7,7 @@ const { getCraftables } = require('../../controllers')
 module.exports = async (ctx) => {
   const craftables = await getCraftables()
 
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Craftables fetched',

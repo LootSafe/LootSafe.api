@@ -7,6 +7,7 @@ const items = [
   {
     name: 'Power G',
     id: 'powerg',
+    symbol: 'PWRG',
     supply: 150,
     rarity: 'rare',
     meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/powerGlove.png'})
@@ -14,6 +15,7 @@ const items = [
   {
     name: 'LootCoin',
     id: 'lootcoin',
+    symbol: 'LOOT',
     supply: 120000,
     rarity: 'common',
     meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/coin.png'})
@@ -21,6 +23,7 @@ const items = [
   {
     name: 'Pouch',
     id: 'pouch',
+    symbol: 'HODL',
     supply: 15000,
     rarity: 'uncommon',
     meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/pouch.png'})
@@ -28,57 +31,56 @@ const items = [
   {
     name: 'Potion',
     id: 'potion',
+    symbol: 'HEAL',
     supply: 25000,
     rarity: 'uncommon',
     meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/potion.png'})
 
   },
   {
-    name: 'Ext Mag',
-    id: 'extmag',
+    name: 'Potato',
+    id: 'potato',
+    symbol: 'TATR',
     supply: 120000,
     rarity: 'rare',
-    meta: JSON.stringify({'img': 'https://d1u5p3l4wpay3k.cloudfront.net/battlegrounds_gamepedia_en/e/e6/Icon_attach_Magazine_Extended_Large.png'})
+    meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/tater.png'})
 
   },
   {
-    name: 'UMP-45',
-    id: 'ump45',
-    supply: 120000,
-    rarity: 'uncommon',
-    meta: JSON.stringify({'img': 'https://d1u5p3l4wpay3k.cloudfront.net/battlegrounds_gamepedia_en/f/fb/Icon_weapon_UMP.png'})
-
-  },
-  {
-    name: 'AUG',
-    id: 'aug',
-    supply: 120000,
-    rarity: 'uncommon',
-    meta: JSON.stringify({'img': 'https://d1u5p3l4wpay3k.cloudfront.net/battlegrounds_gamepedia_en/e/ea/Icon_weapon_AUG_A3.png?version=265b35929df10c6ec906c04ceefb7e98'})
-
-  },
-  {
-    name: 'Revolver',
-    id: 'revolver',
-    supply: 120000,
-    rarity: 'uncommon',
-    meta: JSON.stringify({'img': 'https://d1u5p3l4wpay3k.cloudfront.net/battlegrounds_gamepedia_en/0/02/Icon_weapon_R45.png?version=f1da5a4f74f9c31064bc642579fd9f2b'})
-
-  },
-  {
-    name: 'M14A1',
-    id: 'm14a1',
+    name: 'Arrow',
+    id: 'arrow',
+    symbol: 'ARRW',
     supply: 120000,
     rarity: 'common',
-    meta: JSON.stringify({'img': 'https://d1u5p3l4wpay3k.cloudfront.net/battlegrounds_gamepedia_en/9/99/Icon_weapon_HK416.png?version=4496e28b47e3e4f97a5c343f4ca5b3e2'})
+    meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/arrow.png'})
 
   },
   {
-    name: 'MP5-K',
-    id: 'mp5k',
+    name: 'Bow',
+    id: 'bow',
+    symbol: 'BOW',
     supply: 120000,
-    rarity: 'epic',
-    meta: JSON.stringify({'img': 'https://vignette.wikia.nocookie.net/farcry/images/3/32/FC3_cutout_smg_mp5.png/revision/latest?cb=20130907102712'})
+    rarity: 'uncommon',
+    meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/bow.png'})
+
+  },
+  {
+    name: 'Backpack',
+    id: 'backpack',
+    symbol: 'BPAK',
+    supply: 120000,
+    rarity: 'uncommon',
+    meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/backpack.png'})
+
+  },
+  {
+    name: 'Dagger',
+    id: 'dagger',
+    symbol: 'DAGR',
+    supply: 120000,
+    rarity: 'common',
+    meta: JSON.stringify({'img': 'http://lootsafe-cachestash.9egbdneg7uzvgp.maxcdn-edge.com/dagger.png'})
+
   }
 ]
 
@@ -89,6 +91,7 @@ const {
 console.log(
   chalk.green('Adding items')
 )
+
 getInstance('LootSafe').then(instance => {
   items.map(item => {
     instance.createItem(
@@ -97,7 +100,7 @@ getInstance('LootSafe').then(instance => {
       item.supply,
       '',
       item.meta,
-      'LSIC',
+      item.symbol,
       {gas: 3000000, from: ethereum.account}
     ).then(tx => {
       itemAddresses[item.id] = tx.logs[0].args.itemAddress

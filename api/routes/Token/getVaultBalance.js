@@ -6,7 +6,7 @@ const { getVaultBalance } = require('../../controllers')
  */
 module.exports = async (ctx) => {
   const getVaultBalanceResponse = await getVaultBalance()
-
+  ctx.status = 200
   ctx.body = {
     status: 200,
     message: 'Vault balance fetched',

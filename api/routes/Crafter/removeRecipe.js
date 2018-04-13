@@ -19,12 +19,14 @@ module.exports = async ctx => {
       item
     )
 
+    ctx.status = 200
     ctx.body = {
       status: 200,
       message: 'Recipe removed',
       data: removeRecipeResponse
     }
   } else {
+    ctx.status = 401
     ctx.body = {
       status: 401,
       message: 'Unauthorized access!'
