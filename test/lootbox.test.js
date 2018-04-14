@@ -1,13 +1,15 @@
 const fetch = require('node-fetch')
 
-/* global describe, it */
 describe('LootBox', () => {
+
   describe('Add Item to LootBox', () => {
     it(`should add item to lootbox`, done => {
-      fetch('http://localhost:1337/v1/item/ledger')
+      fetch(`http://localhost:1337/v1/item/ledger`)
         .then(res => res.json())
         .then(json => {
+
           const item = json.data[0].address
+          
           fetch(`http://localhost:1337/v1/lootbox/item/add`, {
             method: 'POST',
             headers: {
@@ -21,54 +23,70 @@ describe('LootBox', () => {
           })
           .then(res => res.json())
           .then(json => {
-            if (json.status === 200 && json.data.tx) {
+
+            if(json.status === 200 && json.data.tx)
               done()
-            } else {
-              done(json.message)
-            }
+            else
+              done('Wrong response code:'  + json.status)
           })
+          .catch(function(err){
+            done(err)
+          })                     
         })
+        .catch(function(err){
+          done(err)
+        })                             
     })
   })
+
   describe('Get lootbox chances', () => {
     it(`should retreive lootbox chances`, done => {
-      fetch('http://localhost:1337/v1/lootbox/chances')
+      fetch(`http://localhost:1337/v1/lootbox/chances`)
         .then(res => res.json())
         .then(json => {
-          if (json.status === 200 && json.data.length) {
+          if(json.status === 200 && json.data.length)
             done()
-          } else {
-            done(json.message)
-          }
+          else
+            done('Wrong response code:'  + json.status)
         })
+        .catch(function(err){
+          done(err)
+        })             
     })
   })
+
   describe('Get lootbox cost', () => {
     it(`should retreive lootbox cost`, done => {
-      fetch('http://localhost:1337/v1/lootbox/cost')
+      fetch(`http://localhost:1337/v1/lootbox/cost`)
         .then(res => res.json())
         .then(json => {
-          if (json.status === 200 && json.data) {
+          if(json.status === 200 && json.data)
             done()
-          } else {
-            done(json.message)
-          }
+          else
+            done('Wrong response code:'  + json.status)
         })
+        .catch(function(err){
+          done(err)
+        })           
     })
   })
+
   describe('Get lootbox items', () => {
     it(`should retreive lootbox items for rarity`, done => {
-      fetch('http://localhost:1337/v1/lootbox/items/common')
+      fetch(`http://localhost:1337/v1/lootbox/items/common`)
         .then(res => res.json())
         .then(json => {
-          if (json.status === 200 && json.data.length) {
+          if(json.status === 200 && json.data.length)
             done()
-          } else {
-            done(json.message)
-          }
+          else
+            done('Wrong response code:'  + json.status)
         })
+        .catch(function(err){
+          done(err)
+        })        
     })
   })
+
   describe('Update lootbox cost', () => {
     it(`should update lootbox open cost`, done => {
       fetch(`http://localhost:1337/v1/lootbox/cost/343`, {
@@ -76,18 +94,21 @@ describe('LootBox', () => {
         headers: {
           'Content-Type': 'application/json',
           key: 'pWpzWuxoKUKAmlHc0wPi7lFS38FTth'
-        }
-      })
-        .then(res => res.json())
-        .then(json => {
-          if (json.status === 200) {
-            done()
-          } else {
-            done(json.message)
           }
         })
+        .then(res => res.json())
+        .then(json => {
+          if(json.status === 200)
+            done()
+          else
+            done('Wrong response code:'  + json.status)
+        })
+        .catch(function(err){
+          done(err)
+        })        
     })
   })
+
   describe('Update lootbox chances', () => {
     it(`should update lootbox rarity chances`, done => {
       fetch(`http://localhost:1337/v1/lootbox/chances/update/3/4/3`, {
@@ -95,16 +116,19 @@ describe('LootBox', () => {
         headers: {
           'Content-Type': 'application/json',
           key: 'pWpzWuxoKUKAmlHc0wPi7lFS38FTth'
-        }
-      })
-        .then(res => res.json())
-        .then(json => {
-          if (json.status === 200) {
-            done()
-          } else {
-            done(json.message)
           }
         })
+        .then(res => res.json())
+        .then(json => {
+          if(json.status === 200)
+            done()
+          else
+            done('Wrong response code:'  + json.status)
+        })
+        .catch(function(err){
+          done(err)
+        })                
     })
   })
+
 })
