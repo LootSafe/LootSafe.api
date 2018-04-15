@@ -1,21 +1,22 @@
 const fetch = require('node-fetch')
 
-/* Tests */
+/* global describe it */
 
 describe('Events', () => {
   describe('Get Events', () => {
-    it(`should return all events`, done => {
+    it(`Should return all events`, done => {
       fetch(`http://localhost:1337/v1/events`)
         .then(res => res.json())
         .then(json => {
-          if(json.status === 200)
+          if (json.status === 200) {
             done()
-          else
-            done('Wrong response code:'  + json.status)
+          } else {
+            done('Wrong response code:' + json.status)
+          }
         })
-        .catch(function(err){
+        .catch(function (err) {
           done(err)
-        })        
+        })
     })
   })
 })
