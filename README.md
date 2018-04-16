@@ -34,9 +34,47 @@ npm run populate
 ```
 
 
-
 Generate hash and add to config (this will allow you to authenticate to requests)
 ```
 npm run init
 npm run generate
 ```
+
+# Verbose Help Running Everything
+
+Run mongodb
+
+```
+mongod
+```
+
+Generate the hash and config
+
+```
+npm run init
+npm run generate
+```
+
+Start up Ganache & the API
+
+```
+npm i 
+npm run testrpc
+npm run full
+```
+
+Stop the API and run
+
+```
+npm run populate
+```
+
+then again 
+
+```
+npm run full
+```
+
+Test data should be loaded and server is now running!
+
+Make sure that the generated config.js is also configurated correctly.
