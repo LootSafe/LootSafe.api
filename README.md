@@ -77,4 +77,4 @@ npm run full
 
 Test data should be loaded and server is now running!
 
-Make sure that the generated config.js is also configurated correctly for yubikey & the url & prefix.
+Make sure that the generated config.js is also configurated correctly for authentication,url & url prefix.
