@@ -40,7 +40,7 @@ npm run init
 npm run generate
 ```
 
-# Verbose Help Running Everything
+# Verbose Running
 
 Run mongodb
 
@@ -77,4 +77,4 @@ npm run full
 
 Test data should be loaded and server is now running!
 
-Make sure that the generated config.js is also configurated correctly.
+Make sure that the generated config.js is also configurated correctly for yubikey & the url & prefix.
