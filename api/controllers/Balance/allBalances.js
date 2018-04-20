@@ -1,4 +1,4 @@
-const {simpleCall, getInstance} = require('../../modules')
+const { simpleCall, getInstance } = require('../../modules')
 const getItem = require('../LootSafe/getItem')
 
 /**
