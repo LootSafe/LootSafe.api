@@ -16,6 +16,7 @@ NodeJS is also required, install instructions vary between systems.
 
 Install depenedancies 
 ```
+git submodule update --init --recursive
 npm i
 ```
 Start Ganache
