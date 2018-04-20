@@ -1,4 +1,4 @@
-const { simpleCall, getInstance } = require('../../modules')
+const {simpleCall, getInstance} = require('../../modules')
 const getItem = require('../LootSafe/getItem')
 
 /**
@@ -6,19 +6,19 @@ const getItem = require('../LootSafe/getItem')
  * @route
  */
 module.exports = (address) => {
-    return simpleCall('LootSafe', 'getItems').then(data => {
-        return Promise.all([...data.map(item => getItem(item))]).then(items => {
-            return Promise.all([
-                ...items.map(item => {
-                    return getInstance('Item', item.address).then(async instance => {
-                        return instance.balanceOf.call(address).then(balance => {
-                            return {
-                                [item.address]: balance
-                            }
-                        })
-                    })
-                })
-            ])
+  return simpleCall('LootSafe', 'getItems').then(data => {
+    return Promise.all([...data.map(item => getItem(item))]).then(items => {
+      return Promise.all([
+        ...items.map(item => {
+          return getInstance('Item', item.address).then(async instance => {
+            return instance.balanceOf.call(address).then(balance => {
+              return {
+                [item.address]: balance
+              }
+            })
+          })
         })
+      ])
     })
+  })
 }
