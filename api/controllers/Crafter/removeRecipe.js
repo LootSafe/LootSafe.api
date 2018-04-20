@@ -5,7 +5,7 @@ const {
 } = require('../../../config')
 
 /**
- * Remove a crafting recepe
+ * Remove a crafting recipe
  * @constructor
  * @param {string} item - Resulting item
  */
