@@ -55,7 +55,7 @@ npm run init
 npm run generate
 ```
 
-Start up Ganache & the API
+Start up Ganache & the API. I reccomend the latest version of ganache, the version specified in the repo may crash when populating due to too many calls at once.
 
 ```
 npm i 
@@ -63,16 +63,10 @@ npm run testrpc
 npm run full
 ```
 
-Stop the API and run
+While the API is running run
 
 ```
 npm run populate
-```
-
-then again 
-
-```
-npm run full
 ```
 
 Test data should be loaded and server is now running!
