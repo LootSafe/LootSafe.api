@@ -7,9 +7,9 @@ const { allBalances } = require('../../controllers')
 module.exports = async (ctx, address) => {
   const balance = await allBalances(address)
 
-  ctx.status = 200
+  ctx.status = balance.status || 200
   ctx.body = {
-    status: 200,
+    status: balance.status || 200,
     message: 'Item balances fetched',
     data: balance
   }
