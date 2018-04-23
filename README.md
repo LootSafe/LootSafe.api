@@ -73,3 +73,12 @@ npm run populate
 Test data should be loaded and server is now running!
 
 Make sure that the generated config.js is also configurated correctly for authentication,url & url prefix.
+
+## Building Extensions
+Our extension should include an `extension.ls.json` in the root of the extension folder which should look like the following...
+```js
+{
+  "api_extension": "extension/location/api.js"
+}
+```
+where `api_extension` is the location of the API descriptor file
