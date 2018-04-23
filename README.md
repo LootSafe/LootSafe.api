@@ -14,7 +14,7 @@ NodeJS is also required, install instructions vary between systems.
 
 # Running
 
-Install depenedancies 
+Install dependencies 
 ```
 git submodule update --init --recursive
 npm i
