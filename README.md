@@ -47,7 +47,7 @@ npm run generate
 
 **Make sure that the config.js is also configurated correctly for authentication and expected url strings.**
 
-Run mongodb is the mongo service isn't running.
+Run mongodb if the mongo service isn't running.
 
 ```
 mongod
