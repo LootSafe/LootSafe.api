@@ -43,23 +43,26 @@ npm run generate
 
 # Verbose Running
 
-Run mongodb
+**Once you have installed MongoDB, Ganache and the repo (recursively so all modules are included) you are ready to run.**
+
+**Make sure that the config.js is also configurated correctly for authentication and expected url strings.**
+
+Run mongodb is the mongo service isn't running.
 
 ```
 mongod
 ```
 
-Generate the hash and config
+Generate the hash and config.
 
 ```
 npm run init
 npm run generate
 ```
 
-Start up Ganache & the API. I reccomend the latest version of ganache, the version specified in the repo may crash when populating due to too many calls at once.
+Start up Ganache & the API. I recommend the latest version of ganache.
 
 ```
-npm i 
 npm run testrpc
 npm run full
 ```
@@ -71,8 +74,6 @@ npm run populate
 ```
 
 Test data should be loaded and server is now running!
-
-Make sure that the generated config.js is also configurated correctly for authentication,url & url prefix.
 
 ## Building Extensions
 Our extension should include an `extension.ls.json` in the root of the extension folder which should look like the following...
