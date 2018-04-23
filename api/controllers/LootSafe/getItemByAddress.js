@@ -3,7 +3,7 @@ const { getInstance } = require('../../modules')
 /**
  * Get specific item address
  * @constructor
- * @param {string} item - The item name
+ * @param {string} address - The item address
  */
 module.exports = async (address) => {
   return getInstance('LootSafe').then(async instance => {

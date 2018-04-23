@@ -17,7 +17,6 @@ module.exports = () => {
           symbol: web3.toUtf8(singleItem.symbol),
           name: web3.toUtf8(singleItem.name)
         }
-
         return Object.assign({}, singleItem, {_parsed})
       })
     })])

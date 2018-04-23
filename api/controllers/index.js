@@ -1,4 +1,5 @@
 module.exports = {
+  // Core
   getTokenAddress: require('./LootSafe/getTokenAddress'),
   newItem: require('./LootSafe/newItem'),
   getItems: require('./LootSafe/getItems'),

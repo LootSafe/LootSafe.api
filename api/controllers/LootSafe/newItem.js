@@ -12,16 +12,10 @@ const {
  * @param {number} totalSupply - The total available items
  * @param {string} skin - The ID of the skin (optional)
  * @param {string} metadata - The metadata for this item (optional)
+ * @param {string} symbol - The symbol of this item
  */
 module.exports = (name, id, supply, skin, metadata, symbol = 'LSIC') => {
   return new Promise(resolve => {
-    console.log(name,
-      id,
-      supply,
-      skin,
-      metadata,
-      symbol,
-      {gas: 3000000, from: ethereum.account})
     getInstance('LootSafe').then(instance => {
       instance.createItem(
         name,

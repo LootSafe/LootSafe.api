@@ -1,4 +1,4 @@
-# LootSafe.api
+ LootSafe.api
 
 # Prerequisites 
 
@@ -73,3 +73,30 @@ npm run populate
 Test data should be loaded and server is now running!
 
 Make sure that the generated config.js is also configurated correctly for authentication,url & url prefix.
+
+## Building Extensions
+Our extension should include an `extension.ls.json` in the root of the extension folder which should look like the following...
+```js
+{
+  "api_extension": "extension/location/api.js"
+}
+```
+where `api_extension` is the location of the API descriptor file
+
+Next you'll want to build out the descriptor file, this file will outline the contract address of your module, the route prefix for this module, and all of the routes for your module. Below is an example file.
+
+```js
+module.exports = {
+  contract: '0x0000000000000...',
+  endpoint: 'myextension',
+  route: [
+    {
+      endpoint: 'someroute',
+      controller: (provider, ctx) => {
+        // Some logic
+        ctx.body = {}
+      }            
+    }    
+  ]
+}
+```
