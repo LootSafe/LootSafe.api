@@ -82,6 +82,7 @@ Our extension should include an `extension.ls.json` in the root of the extension
 }
 ```
 where `api_extension` is the location of the API descriptor file
+<<<<<<< HEAD
 
 Next you'll want to build out the descriptor file, this file will outline the contract address of your module, the route prefix for this module, and all of the routes for your module. Below is an example file.
 
@@ -100,3 +101,5 @@ module.exports = {
   ]
 }
 ```
+=======
+>>>>>>> a251eee2a62d80e30ff7c0afcc643e33e50358eb
