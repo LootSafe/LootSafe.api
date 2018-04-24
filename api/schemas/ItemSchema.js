@@ -5,6 +5,14 @@ const ItemSchema = mongoose.Schema({
     type: String,
     default: '0x0'
   },
+  name: {
+    type: String,
+    default: '0x0'
+  },
+  ownerBalance: {
+    type: Number,
+    default: 0
+  },
   id: {
     type: String,
     default: '0x0'

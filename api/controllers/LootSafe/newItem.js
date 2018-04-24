@@ -1,4 +1,4 @@
-const { getInstance } = require('../../modules')
+const { getInstance, createUpdateItem } = require('../../modules')
 
 const {
   ethereum
@@ -26,16 +26,27 @@ module.exports = (name, id, supply, skin, metadata, symbol = 'LSIC') => {
         symbol,
         {gas: 3000000, from: ethereum.account}
       ).then(tx => {
-        resolve({
-          status: 200,
-          message: 'Created new item',
-          data: tx
-        })
+        console.log('tx!', tx);
+        // TODO: Save to cache as mined
+        createUpdateItem({ id, address: tx.logs[0].args['itemAddress'] })
       }).catch(() => {
-        resolve({
-          status: 500,
-          message: 'Failed to deploy, have you already deployed this contract?'
-        })
+        // TODO: Save to cache as failed
+        console.warn('FUCK!')
+      })
+
+      createUpdateItem({
+        name,
+        id,
+        totalSupply: supply,
+        skin,
+        metadata,
+        symbol,
+        owner: '0x0'
+      })
+
+      resolve({
+        status: 200,
+        message: 'Your item creation is being mined, once mined it will be deployed to the network!'
       })
     })
   })

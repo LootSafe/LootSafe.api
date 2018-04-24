@@ -1,4 +1,4 @@
 module.exports = {
   EventSchema: require('./EventSchema'),
-  Item: require('./ItemSchema')
+  ItemSchema: require('./ItemSchema')
 }

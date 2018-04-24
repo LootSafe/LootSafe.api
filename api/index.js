@@ -33,6 +33,7 @@ const {
   getItemAddresses,
   getItemByAddress,
   ledger,
+  getChainItems,
   // Crafter
   getRecipe,
   getDeconstructionRecipe,
@@ -85,6 +86,7 @@ app.use(_.get(`${prefix}/v${version}/item/get/:item`, getItem))
 app.use(_.get(`${prefix}/v${version}/item/get/address/:address`, getItemByAddress))
 app.use(_.get(`${prefix}/v${version}/item/addresses/get`, getItemAddresses))
 app.use(_.get(`${prefix}/v${version}/item/ledger`, ledger))
+app.use(_.get(`${prefix}/v${version}/item/chain`, getChainItems))
 
 // *******************
 // ----- LootBox -----

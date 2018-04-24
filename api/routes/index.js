@@ -9,6 +9,7 @@ module.exports = {
   getItemAddresses: require('./LootSafe/getItemAddresses'),
   getItemByAddress: require('./LootSafe/getItemByAddress'),
   ledger: require('./LootSafe/ledger'),
+  getChainItems: require('./LootSafe/getChainItems'),
   // Crafter
   newRecipe: require('./Crafter/newRecipe'),
   newDeconstructionRecipe: require('./Crafter/newDeconstructionRecipe'),

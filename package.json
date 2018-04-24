@@ -8,6 +8,7 @@
     "full": "npm run deploy && npm start",
     "start": "node api",
     "deploy": "cd contracts && ../node_modules/truffle/build/cli.bundled.js compile && ../node_modules/truffle/build/cli.bundled.js migrate",
+    "proddeploy": "cd contracts && ../node_modules/truffle/build/cli.bundled.js compile && ../node_modules/truffle/build/cli.bundled.js migrate --network rinkeby",
     "testrpc": "ganache-cli -l 0x134250805",
     "test": "./node_modules/mocha/bin/mocha --recursive test",
     "populate": "node ./debug/populate",
