@@ -6,7 +6,7 @@
   "scripts": {
     "init": "cp config.example.js config.js",
     "full": "npm run deploy && npm start",
-    "start": "node api",
+    "start": "node api 1337 localhost 8545 http testrpc testnet",
     "deploy": "cd contracts && ../node_modules/truffle/build/cli.bundled.js compile && ../node_modules/truffle/build/cli.bundled.js migrate",
     "testrpc": "ganache-cli -l 0x134250805",
     "test": "./node_modules/mocha/bin/mocha --recursive test",
