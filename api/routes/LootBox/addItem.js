@@ -18,7 +18,7 @@ module.exports = async ctx => {
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
     if (itemExists) {
-      const addItemRespopnse = await addItem(
+      await addItem(
         item,
         rarity
       )

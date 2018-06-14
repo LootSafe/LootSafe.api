@@ -23,12 +23,14 @@ module.exports = async (ctx) => {
     const to = req.to
 
     //if (decoded.includes(name)) {
-      const spawnItemResponse = await spawnItem(itemAddress, to)
+      spawnItem(itemAddress, to)
       ctx.status = 200
       ctx.body = {
         status: 200,
         message: "Spawned one item",
-        data: spawnItemResponse
+        data: {
+          item: itemAddress
+        }
       }
     /*} else {
       ctx.body = {

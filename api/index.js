@@ -58,7 +58,10 @@ const {
   allBalances
 } = require('./routes')
 
-mongoose.connect(`mongodb://localhost/${db}`)
+mongoose.connect(`mongodb://localhost/${db}`, {
+  useMongoClient: true,
+  promiseLibrary: global.Promise
+})
 
 /* TODO
 cacheItems()
@@ -163,12 +166,45 @@ extensions.map(ext => {
       ctx.body = response
     }))
   })
-  console.log(chalk.green(`Loaded module ${ext}`))
+
+  // Delay for prettier logging
+  setTimeout(() => {
+    console.log(`${chalk.bold(chalk.magenta('MODULE LOADED:'))} ${ext}`)
+  }, 100)
 })
 
 app.listen(port)
 
 // 🚀 We have liftoff
+console.log(
+  chalk.bold(
+    chalk.white(`
+             ''''''''''''''''''''''''''''''''''                ''''''''''''''''''''''''''''''''''   
+         './shddddddddddddddddddddddddddddddddhs/'         './shddddddddddddddddddddddddddddddddhs/'
+        'oNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh'      '.sNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMh
+       'hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMd'   '.sNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+       +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNh:' '.sNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMm
+      'mMMMMMMMMMMNmddddddddddddddddmNMMMMMMMMNh:' '.sNMMMMMMMMMMMMMNmddddddddddddddddmNMMMMMMMMMMM+
+      /MMMMMMMMMMd.'      ''''''    ':mMMMMMNh:' '.sNMMMMMMMMMMMMMmo.'    '..'        '/MMMMMMMMMMN'
+     'dMMMMMMMMMM/        +hhhh:      .dMMNh:' '.sNMMMMMMMMMMMMMmo.     'odNNd.        sMMMMMMMMMMs 
+     -MMMMMMMMMMm'       'mMMMN'       .hh:'  .sNMMMMMMMMMMMMMmo.       -MMMMm.       'NMMMMMMMMMM- 
+     yMMMMMMMMMM+   '////oMMMMd////'    ''  .sNMMMMMMMMMMMMMmo.   '-+o+.'/oo/.-+o/'   +MMMMMMMMMMh  
+    .NMMMMMMMMMN'   +MMMMMMMMMMMMMm'      .sNMMMMMMMMMMMMMmo.     +NMMMy    'yNMMMo  'mMMMMMMMMMM:  
+    sMMMMMMMMMMs    hNNNNMMMMNNNNN+     .sNMMMMMMMMMMMMMNs.       oNNNh: ''  yNNmy.  /MMMMMMMMMMd'  
+   'NMMMMMMMMMM-    ....yMMMM+....'   .sNMMMMMMMMMMMMMNs.' .o-    '.-.'/hmds''--.'  'hMMMMMMMMMM+   
+   +MMMMMMMMMMh        'NMMMN'      .sNMMMMMMMMMMMMMNs.' .omMm:       /MMMMm'       -MMMMMMMMMMN'   
+  'mMMMMMMMMMM:        '////:     .sNMMMMMMMMMMMMMNs.' .omMMMMN/      .shho.        yMMMMMMMMMMo    
+  :MMMMMMMMMMM+:::::::::::::::::/sNMMMMMMMMMMMMMNs.' 'omMMMMMMMNo:::::::/:::::::::/sMMMMMMMMMMN.    
+  hMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNy-' '+mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy    
+ .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy-'  -mMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN-    
+ .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMy-'    'yMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMN/     
+ 'oNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNy-'       'oNMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMNy-      
+   ':+ooooooooooooooooooooooooooooooo+/-''          '':+ooooooooooooooooooooooooooooooo+/-''    
+    `)
+  )
+)
+
+
 console.log(
   chalk.bold(
     chalk.green(

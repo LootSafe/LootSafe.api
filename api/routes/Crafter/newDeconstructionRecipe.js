@@ -19,7 +19,7 @@ module.exports = async ctx => {
 
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
-    const newRecipeResponse = await newDeconstructionRecipe(
+    newDeconstructionRecipe(
       item,
       rewards,
       counts
@@ -29,7 +29,11 @@ module.exports = async ctx => {
     ctx.body = {
       status: 200,
       message: 'New deconstruction recipe added',
-      data: newRecipeResponse
+      data: {
+        item,
+        rewards,
+        counts
+      }
     }
   } else {
     ctx.status = 401

@@ -9,13 +9,17 @@ const checkAccess = require('../../middleware/accessControl')
 module.exports = async (ctx, epic, rare, uncommon) => {
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
-    const chanceResponse = await updateChance(epic, rare, uncommon)
+    updateChance(epic, rare, uncommon)
     
     ctx.status = 200
     ctx.body = {
       status: 200,
       message: 'Updated lootbox chances',
-      data: chanceResponse
+      data: {
+        epic, 
+        rare, 
+        uncommon
+      }
     }
   } else {
     ctx.status = 401

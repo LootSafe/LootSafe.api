@@ -10,13 +10,15 @@ const checkAccess = require('../../middleware/accessControl')
 module.exports = async (ctx, cost) => {
   const access = await checkAccess(ctx.request.headers.key, ctx.request.headers.otp)
   if (access) {
-    const costResponse = await updateLootBoxCost(cost)
+    updateLootBoxCost(cost)
 
     ctx.status = 200
     ctx.body = {
       status: 200,
       message: 'Updated lootbox cost',
-      data: costResponse
+      data: {
+        cost
+      }
     }
   } else {
     ctx.status = 401

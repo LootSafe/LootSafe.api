@@ -26,12 +26,9 @@ module.exports = (name, id, supply, skin, metadata, symbol = 'LSIC') => {
         symbol,
         {gas: 3000000, from: ethereum.account}
       ).then(tx => {
-        console.log('tx!', tx);
-        // TODO: Save to cache as mined
         createUpdateItem({ id, address: tx.logs[0].args['itemAddress'] })
       }).catch(() => {
         // TODO: Save to cache as failed
-        console.warn('FUCK!')
       })
 
       createUpdateItem({

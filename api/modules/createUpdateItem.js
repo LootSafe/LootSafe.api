@@ -11,11 +11,13 @@ module.exports = (item) => {
         address: '0x0',
         name: item.name,
         id: item.id,
+        symbol: item.symbol,
         skin: item.skin,
         metadata: item.metadata,
         created: Date.now(),
         owner: addresses["LootSafe"],
         totalSupply: item.totalSupply,
+        ownerBalance: item.totalSupply,
         finalSupply: 0,
       })
 
